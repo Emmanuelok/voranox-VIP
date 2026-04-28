@@ -1,3 +1,28 @@
+export type PlatformPillar = {
+  name: string;
+  body: string;
+};
+
+export type PlatformUseCase = {
+  title: string;
+  body: string;
+};
+
+export type PlatformMetric = {
+  value: string;
+  label: string;
+};
+
+export type PlatformDeepContent = {
+  longTagline: string;
+  manifesto: string;
+  pillars: PlatformPillar[];
+  useCases: PlatformUseCase[];
+  clients: string[];
+  metrics: PlatformMetric[];
+  doctrine: string[];
+};
+
 export type Sector = {
   slug: string;
   name: string;
@@ -15,6 +40,7 @@ export type Sector = {
   description: string;
   capabilities: string[];
   href: string;
+  deep?: PlatformDeepContent;
 };
 
 export const sectors: Sector[] = [
@@ -33,6 +59,68 @@ export const sectors: Sector[] = [
       "Hospital operations AI",
     ],
     href: "https://vitae.voranox.com",
+    deep: {
+      longTagline:
+        "Vitae is the clinical intelligence platform engineered to medicine's standard of care — and beyond it.",
+      manifesto:
+        "Medicine is the most consequential profession humanity has built — and the one most punished by bad data, fragmented records, and time-poor clinicians. Voranox Vitae is intelligence engineered for the bedside, the operating theater, and the population — calibrated to the clinical evidence base, governed by clinicians, and accountable to the patient. We do not replace medical judgment. We give it more time, more memory, and more reach.",
+      pillars: [
+        {
+          name: "Clinical Decision Support",
+          body: "Differential diagnosis, treatment pathway, and medication intelligence calibrated to the latest evidence — with full provenance to source literature and guidelines.",
+        },
+        {
+          name: "Population Health",
+          body: "Risk stratification, care-gap intelligence, and outcomes analytics across covered lives — for payers, ACOs, and integrated delivery networks.",
+        },
+        {
+          name: "Genomic & Precision Medicine",
+          body: "Variant interpretation, pharmacogenomics, and trial-matching intelligence — engineered for clinical genomics teams and biotech research.",
+        },
+        {
+          name: "Hospital Operations",
+          body: "Capacity, throughput, OR scheduling, and clinical workforce intelligence — the operating system of the modern hospital.",
+        },
+      ],
+      useCases: [
+        {
+          title: "Bedside clinical co-pilot",
+          body: "Synthesizes patient record, current evidence, and institutional protocols at the point of care — surfacing what a senior consultant would notice, with full citations.",
+        },
+        {
+          title: "Population risk surveillance",
+          body: "Continuous stratification of covered populations against deterioration, readmission, and care-gap risk — directing limited clinical attention to where it changes outcomes.",
+        },
+        {
+          title: "Genomic tumor board",
+          body: "Variant interpretation, therapy matching, and trial discovery — assembled into the artifact a tumor board actually uses, in the time a tumor board actually has.",
+        },
+        {
+          title: "Capacity & throughput intelligence",
+          body: "Real-time bed, OR, and ED capacity intelligence — turning the hospital into a coordinated system rather than a federation of departments.",
+        },
+      ],
+      clients: [
+        "Academic Medical Centers",
+        "Integrated Delivery Networks",
+        "National Health Services",
+        "Health Insurers & Payers",
+        "Biotechnology & Pharma",
+        "Public Health Authorities",
+      ],
+      metrics: [
+        { value: "HIPAA + GDPR", label: "Privacy posture by default" },
+        { value: "ISO 13485", label: "Quality system certified" },
+        { value: "SaMD", label: "Software-as-Medical-Device pathway" },
+        { value: "Clinician-led", label: "Every model, governed" },
+      ],
+      doctrine: [
+        "Clinicians govern the model, not the other way around.",
+        "Every recommendation cites its evidence.",
+        "Privacy is sacred. Consent is meaningful.",
+        "Outcomes are the only ground truth that matters.",
+      ],
+    },
   },
   {
     slug: "pharmaceuticals",
@@ -65,6 +153,68 @@ export const sectors: Sector[] = [
       "Wealth advisory AI",
     ],
     href: "https://sterling.voranox.com",
+    deep: {
+      longTagline:
+        "Sterling is the intelligence layer underneath the world's most trusted balance sheets.",
+      manifesto:
+        "Banking is, at its core, a profession of judgment under uncertainty — about credit, about counterparties, about capital, about the future. For three centuries that judgment was carried in the heads of senior bankers. Voranox Sterling is the institutional memory and instinct of a great bank, made tractable, auditable, and continuous. It does not replace the banker; it equips them with intelligence at the scale of every position, every counterparty, every regulation, every market — at every moment.",
+      pillars: [
+        {
+          name: "Risk Intelligence",
+          body: "A unified credit, market, liquidity, and operational risk plane — continuously revalued against position, counterparty, and macro signal.",
+        },
+        {
+          name: "Compliance & Conduct",
+          body: "AML, KYC, sanctions, surveillance, and conduct intelligence engineered to the standards of FATF, FCA, OCC, and the ECB — with auditability as a first-class property.",
+        },
+        {
+          name: "Markets & Trading",
+          body: "Pre-trade, in-trade, and post-trade intelligence across asset classes — execution, hedging, and inventory optimization with sovereign-grade controls.",
+        },
+        {
+          name: "Client & Wealth",
+          body: "Relationship, portfolio, and advisory intelligence for private banks, wealth managers, and family offices — with institutional discretion built in.",
+        },
+      ],
+      useCases: [
+        {
+          title: "Continuous credit revaluation",
+          body: "Every loan, every counterparty, every facility — continuously revalued against earnings, market, and macro signals. PD, LGD, and EAD as living surfaces, not quarterly snapshots.",
+        },
+        {
+          title: "Sanctions & AML at the speed of payments",
+          body: "Sub-second screening across global sanctions regimes, with explainable risk reasoning, false-positive suppression, and full regulator-grade audit trail.",
+        },
+        {
+          title: "Trader & desk intelligence",
+          body: "Real-time desk PnL, exposure, and behavior analytics — with surveillance signals that distinguish market-making from misconduct without false alarms.",
+        },
+        {
+          title: "Sovereign & institutional advisory",
+          body: "Macro, FX reserve, and balance-sheet intelligence for central banks, sovereign wealth funds, and DFIs — with the discretion the work demands.",
+        },
+      ],
+      clients: [
+        "Global Systemically Important Banks (G-SIBs)",
+        "Investment & Universal Banks",
+        "Asset Managers & Insurers",
+        "Central Banks & Monetary Authorities",
+        "Sovereign Wealth Funds",
+        "Development Finance Institutions",
+      ],
+      metrics: [
+        { value: "$50T+", label: "Addressable balance sheet served" },
+        { value: "180", label: "Jurisdictions supported" },
+        { value: "<50ms", label: "Sanctions screening latency" },
+        { value: "Tier 1", label: "Operational resilience standard" },
+      ],
+      doctrine: [
+        "Auditability is a first-class property, not an afterthought.",
+        "The model is wrong until proven right by the regulator.",
+        "Speed without discretion is a liability, not an asset.",
+        "Every figure is reproducible. Every decision is explainable.",
+      ],
+    },
   },
   {
     slug: "insurance",
@@ -113,6 +263,68 @@ export const sectors: Sector[] = [
       "Public finance intelligence",
     ],
     href: "https://civitas.voranox.com",
+    deep: {
+      longTagline:
+        "Civitas is sovereign-grade intelligence for the institutions that govern — designed for digital sovereignty, public legitimacy, and the long horizon of the state.",
+      manifesto:
+        "Government is not a market. It is the architecture of collective life. Voranox Civitas builds intelligence for the ministries, agencies, and cities that operate at that scale — with the discipline of public accountability, the patience of policy, and the technical sovereignty that nations require. Our platforms run in the jurisdictions that own them, on the terms that the public demands.",
+      pillars: [
+        {
+          name: "Policy & Foresight",
+          body: "Policy simulation, fiscal impact modeling, and long-horizon scenario planning for ministries and policy units.",
+        },
+        {
+          name: "Citizen Services",
+          body: "Multilingual citizen-services AI engineered for accessibility, plain-language, and the dignity of the encounter with the state.",
+        },
+        {
+          name: "Digital Identity & Trust",
+          body: "Sovereign digital identity, attestations, and trust frameworks — interoperable with eIDAS, and engineered for public legitimacy.",
+        },
+        {
+          name: "Public Finance & Procurement",
+          body: "Tax, customs, public-finance, and procurement intelligence — the fiscal nervous system of the modern state.",
+        },
+      ],
+      useCases: [
+        {
+          title: "Policy impact simulation",
+          body: "Model the fiscal, distributional, and behavioral impact of policy options before they reach the floor — with full transparency on assumptions.",
+        },
+        {
+          title: "Multilingual citizen services",
+          body: "Plain-language, accessible, and respectful citizen-facing AI — engineered for the linguistic and accessibility realities of a modern population.",
+        },
+        {
+          title: "Sovereign digital identity",
+          body: "Identity and attestation infrastructure that the state owns, citizens trust, and the private sector can interoperate with.",
+        },
+        {
+          title: "Tax & customs intelligence",
+          body: "Risk-based intelligence for revenue authorities — protecting the public purse without burdening the compliant majority.",
+        },
+      ],
+      clients: [
+        "National Governments & Ministries",
+        "Central & Federal Agencies",
+        "Subnational & City Governments",
+        "Multilateral Institutions",
+        "Public-Sector Modernization Programs",
+        "Sovereign Digital Infrastructure",
+      ],
+      metrics: [
+        { value: "Sovereign", label: "Deployable in-jurisdiction" },
+        { value: "Open standards", label: "By policy, by principle" },
+        { value: "Multilingual", label: "Built for plural societies" },
+        { value: "Auditable", label: "By the public, not just by us" },
+      ],
+      doctrine: [
+        "The state owns the data. Always.",
+        "Citizens are not users. They are constituents.",
+        "Open standards are non-negotiable.",
+        "Every decision must be defensible to the public it serves.",
+      ],
+    },
   },
   {
     slug: "defense",
@@ -129,6 +341,68 @@ export const sectors: Sector[] = [
       "Logistics & sustainment",
     ],
     href: "https://sentinel.voranox.com",
+    deep: {
+      longTagline:
+        "Sentinel is the decision-intelligence layer for allied defense — engineered to compress the kill chain without compromising the chain of command.",
+      manifesto:
+        "Modern conflict is decided at the speed of decision. Sensors out-pace analysts; weapons out-pace planners; adversaries out-pace doctrine written for a slower century. Voranox Sentinel exists to put the right intelligence in front of the right decision-maker, in time, with the lawful and ethical guardrails the profession of arms requires. Our work is reserved for the defense and security agencies of allied democracies, and is engineered to their standards.",
+      pillars: [
+        {
+          name: "ISR Fusion",
+          body: "Multi-INT fusion across SIGINT, GEOINT, MASINT, and OSINT — turning sensor exhaust into a single, queryable operational picture.",
+        },
+        {
+          name: "Mission Planning",
+          body: "Course-of-action generation, wargaming, and operational risk modeling — accelerating planning cycles without removing the commander from the loop.",
+        },
+        {
+          name: "Threat & Adversary Intelligence",
+          body: "Continuous tracking of adversary order-of-battle, doctrine, and capability evolution — with confidence bands and evidentiary provenance.",
+        },
+        {
+          name: "Logistics & Sustainment",
+          body: "Predictive sustainment, parts intelligence, and contested-logistics modeling — the unglamorous discipline that decides modern campaigns.",
+        },
+      ],
+      useCases: [
+        {
+          title: "Multi-INT fusion at theater scale",
+          body: "Continuous fusion of imagery, signals, and open-source intelligence into a single operational picture — with provenance, classification, and time-to-confidence on every track.",
+        },
+        {
+          title: "Accelerated mission planning",
+          body: "Course-of-action generation and wargaming for joint staff — compressing planning cycles from days to hours without bypassing doctrine or authority.",
+        },
+        {
+          title: "Predictive sustainment",
+          body: "Parts, fuel, and platform readiness modeling across contested logistics — keeping the force in the fight when the supply line is under pressure.",
+        },
+        {
+          title: "Lawful, ethical AI under operational tempo",
+          body: "Human-on-the-loop architectures, IHL-compliant guardrails, and full evidentiary chains — engineered for democratic oversight at speed.",
+        },
+      ],
+      clients: [
+        "Allied Defense Ministries",
+        "Joint & Combined Commands",
+        "National Security Agencies",
+        "Intelligence Communities",
+        "Defense Primes & Integrators",
+        "Coast Guards & Border Authorities",
+      ],
+      metrics: [
+        { value: "Allied", label: "Democracies only — by policy" },
+        { value: "IL5/IL6", label: "Classified deployment ready" },
+        { value: "Human-on-loop", label: "By default, by doctrine" },
+        { value: "Audited", label: "Every action, every time" },
+      ],
+      doctrine: [
+        "We serve allied democracies. We do not arm adversaries.",
+        "Human authority is preserved. Always.",
+        "Speed without lawfulness is not an advantage.",
+        "Every action is recorded. Every decision is reviewable.",
+      ],
+    },
   },
   {
     slug: "intelligence",

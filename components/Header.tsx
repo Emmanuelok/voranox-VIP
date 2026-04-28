@@ -5,6 +5,7 @@ const nav = [
   { href: "/platforms", label: "Platforms" },
   { href: "/about", label: "The Firm" },
   { href: "/practices", label: "Practices" },
+  { href: "/trust", label: "Trust" },
   { href: "/insights", label: "Insights" },
   { href: "/contact", label: "Engage" },
 ];

@@ -33,6 +33,39 @@ export const metadata: Metadata = {
   },
 };
 
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "Voranox Inc.",
+  legalName: "Voranox Incorporated",
+  url: "https://voranox.com",
+  logo: "https://voranox.com/icon.svg",
+  description:
+    "Voranox Inc. is the parent company architecting intelligent platforms across every industry, sector, and institution worldwide.",
+  slogan: "Intelligence, refined.",
+  foundingDate: "2025",
+  sameAs: [],
+  contactPoint: [
+    {
+      "@type": "ContactPoint",
+      contactType: "general inquiries",
+      email: "briefings@voranox.com",
+      areaServed: "Worldwide",
+      availableLanguage: ["English"],
+    },
+    {
+      "@type": "ContactPoint",
+      contactType: "press",
+      email: "press@voranox.com",
+    },
+    {
+      "@type": "ContactPoint",
+      contactType: "talent",
+      email: "talent@voranox.com",
+    },
+  ],
+};
+
 export default function RootLayout({
   children,
 }: {
@@ -41,6 +74,12 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
       <body className="min-h-screen flex flex-col bg-midnight text-ivory antialiased">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationSchema),
+          }}
+        />
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
