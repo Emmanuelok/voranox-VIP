@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ContactForm } from "@/components/ContactForm";
 
 export const metadata: Metadata = {
   title: "Engage",
@@ -45,85 +46,9 @@ export default function ContactPage() {
           </div>
         </div>
 
-        <form
-          className="lg:col-span-3 border border-gold/15 bg-midnight-50/40 p-10 space-y-6"
-          action="mailto:briefings@voranox.com"
-          method="post"
-        >
-          <Field label="Full name" name="name" required />
-          <Field label="Title" name="title" />
-          <Field label="Institution" name="institution" required />
-          <Field label="Email" name="email" type="email" required />
-          <div>
-            <label className="text-xs tracking-[0.3em] uppercase text-gold mb-3 block">
-              Domain of interest
-            </label>
-            <select
-              name="domain"
-              className="w-full bg-midnight border border-gold/20 px-4 py-3 text-ivory focus:border-gold outline-none"
-            >
-              <option>Select a domain</option>
-              <option>Public Sector</option>
-              <option>Financial</option>
-              <option>Industry</option>
-              <option>Life Sciences</option>
-              <option>Society</option>
-              <option>Infrastructure</option>
-              <option>Knowledge</option>
-              <option>Commerce</option>
-            </select>
-          </div>
-          <div>
-            <label className="text-xs tracking-[0.3em] uppercase text-gold mb-3 block">
-              Message
-            </label>
-            <textarea
-              name="message"
-              rows={5}
-              className="w-full bg-midnight border border-gold/20 px-4 py-3 text-ivory focus:border-gold outline-none resize-none"
-              placeholder="Where is intelligence required?"
-            />
-          </div>
-          <button
-            type="submit"
-            className="w-full inline-flex items-center justify-center gap-3 px-8 py-4 bg-gold-shine shimmer text-midnight text-xs tracking-[0.3em] uppercase font-medium"
-          >
-            Submit Inquiry <span aria-hidden>→</span>
-          </button>
-          <p className="text-[11px] text-ivory/40 leading-relaxed">
-            All inquiries are received in confidence. A senior partner will
-            respond within two business days.
-          </p>
-        </form>
+        <ContactForm />
       </div>
     </section>
-  );
-}
-
-function Field({
-  label,
-  name,
-  type = "text",
-  required,
-}: {
-  label: string;
-  name: string;
-  type?: string;
-  required?: boolean;
-}) {
-  return (
-    <div>
-      <label className="text-xs tracking-[0.3em] uppercase text-gold mb-3 block">
-        {label}
-        {required && <span className="text-gold/60 ml-1">*</span>}
-      </label>
-      <input
-        type={type}
-        name={name}
-        required={required}
-        className="w-full bg-midnight border border-gold/20 px-4 py-3 text-ivory focus:border-gold outline-none"
-      />
-    </div>
   );
 }
 

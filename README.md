@@ -34,14 +34,32 @@ app/
   platforms/page.tsx           Full platform directory grouped by domain
   platforms/[slug]/page.tsx    Individual platform page
   not-found.tsx                404
+  icon.svg                     Favicon (gold V on midnight)
+  opengraph-image.tsx          Dynamic OG image for the site root
+  platforms/[slug]/opengraph-image.tsx
+                               Dynamic OG image for each platform page
+  contact/actions.ts           Server Action — validates and sends inquiry
 components/
   Header.tsx
   Footer.tsx
   Logo.tsx
   SectorCard.tsx
+  ContactForm.tsx              Client form with useActionState
 lib/
   sectors.ts                   Source of truth for every Voranox platform
 ```
+
+## Environment
+
+Copy `.env.example` → `.env.local` and fill in:
+
+| Variable | Purpose |
+| --- | --- |
+| `RESEND_API_KEY` | Resend API key — required to deliver inquiries from the contact form. Without it, inquiries are accepted and logged server-side only. |
+| `VORANOX_TO_EMAIL` | Inbox to receive inquiries. Default: `briefings@voranox.com`. |
+| `VORANOX_FROM_EMAIL` | "From" address. Must be a domain verified in Resend, or use the sandbox `onboarding@resend.dev`. |
+
+In production, set the same three variables in **Vercel → Project → Settings → Environment Variables**.
 
 ## Adding a Platform
 
