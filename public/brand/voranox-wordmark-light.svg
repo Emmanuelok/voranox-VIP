@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 160" width="720" height="160">
+  <defs>
+    <linearGradient id="wlgold" x1="0" y1="0" x2="720" y2="0" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#9E823F"/>
+      <stop offset="50%" stop-color="#C9A961"/>
+      <stop offset="100%" stop-color="#9E823F"/>
+    </linearGradient>
+  </defs>
+  <rect width="720" height="160" fill="#F5F1E8"/>
+  <g transform="translate(40 40)">
+    <circle cx="40" cy="40" r="38" stroke="url(#wlgold)" stroke-width="2" fill="none"/>
+    <path d="M18 24 L40 70 L62 24" stroke="url(#wlgold)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <circle cx="40" cy="40" r="3" fill="url(#wlgold)"/>
+  </g>
+  <text x="146" y="98" font-family="'Playfair Display', Georgia, serif" font-size="58" font-weight="500" letter-spacing="6" fill="#050816">VORANOX</text>
+  <text x="565" y="92" font-family="'Playfair Display', Georgia, serif" font-size="22" letter-spacing="10" fill="url(#wlgold)">INC.</text>
+</svg>

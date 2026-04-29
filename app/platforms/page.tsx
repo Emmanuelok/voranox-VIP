@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { sectors, sectorCategories } from "@/lib/sectors";
-import { SectorCard } from "@/components/SectorCard";
+import { PlatformDirectory } from "@/components/PlatformDirectory";
 
 export const metadata: Metadata = {
   title: "Platforms",
@@ -29,38 +29,7 @@ export default function PlatformsIndexPage() {
         </div>
       </section>
 
-      {sectorCategories.map((category) => {
-        const items = sectors.filter((s) => s.category === category);
-        return (
-          <section
-            key={category}
-            className="border-b border-gold/15"
-          >
-            <div className="max-w-7xl mx-auto px-6 lg:px-10 py-20">
-              <div className="flex items-baseline justify-between mb-10">
-                <div>
-                  <p className="text-xs tracking-[0.4em] uppercase text-gold/80 mb-3">
-                    Domain
-                  </p>
-                  <h2 className="font-serif text-3xl md:text-5xl text-ivory">
-                    {category}
-                  </h2>
-                </div>
-                <p className="text-xs tracking-[0.3em] uppercase text-ivory/40">
-                  {items.length} platforms
-                </p>
-              </div>
-              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-gold/10 border border-gold/15">
-                {items.map((s) => (
-                  <div key={s.slug} className="bg-midnight">
-                    <SectorCard sector={s} />
-                  </div>
-                ))}
-              </div>
-            </div>
-          </section>
-        );
-      })}
+      <PlatformDirectory sectors={sectors} />
     </>
   );
 }

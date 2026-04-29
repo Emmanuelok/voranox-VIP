@@ -69,31 +69,41 @@ export default async function PlatformPage({
             </p>
           )}
 
-          <div className="mt-12 flex flex-wrap gap-4">
-            {sector.slug === "financial-services" ? (
-              <Link
-                href="/sterling"
-                className="inline-flex items-center gap-3 px-8 py-4 bg-gold-shine shimmer text-midnight text-xs tracking-[0.3em] uppercase font-medium"
-              >
-                Preview Command Center <span aria-hidden>→</span>
-              </Link>
-            ) : (
-              <a
-                href={sector.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-3 px-8 py-4 bg-gold-shine shimmer text-midnight text-xs tracking-[0.3em] uppercase font-medium"
-              >
-                Visit Platform <span aria-hidden>↗</span>
-              </a>
-            )}
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-3 px-8 py-4 border border-ivory/20 text-ivory text-xs tracking-[0.3em] uppercase hover:border-gold hover:text-gold transition"
-            >
-              Request a Briefing
-            </Link>
-          </div>
+          {(() => {
+            const previewMap: Record<string, { href: string; label: string }> = {
+              "financial-services": { href: "/sterling", label: "Preview Command Center" },
+              healthcare: { href: "/vitae", label: "Preview Clinical Co-Pilot" },
+              defense: { href: "/sentinel", label: "Preview Mission Picture" },
+            };
+            const preview = previewMap[sector.slug];
+            return (
+              <div className="mt-12 flex flex-wrap gap-4">
+                {preview ? (
+                  <Link
+                    href={preview.href}
+                    className="inline-flex items-center gap-3 px-8 py-4 bg-gold-shine shimmer text-midnight text-xs tracking-[0.3em] uppercase font-medium"
+                  >
+                    {preview.label} <span aria-hidden>→</span>
+                  </Link>
+                ) : (
+                  <a
+                    href={sector.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-3 px-8 py-4 bg-gold-shine shimmer text-midnight text-xs tracking-[0.3em] uppercase font-medium"
+                  >
+                    Visit Platform <span aria-hidden>↗</span>
+                  </a>
+                )}
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center gap-3 px-8 py-4 border border-ivory/20 text-ivory text-xs tracking-[0.3em] uppercase hover:border-gold hover:text-gold transition"
+                >
+                  Request a Briefing
+                </Link>
+              </div>
+            );
+          })()}
 
           {deep && deep.metrics.length > 0 && (
             <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-y-10 gap-x-8 max-w-4xl border-t border-gold/15 pt-12">

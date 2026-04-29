@@ -26,11 +26,36 @@ const releases = [
 ];
 
 const kit = [
-  { label: "Wordmark · SVG", note: "Vector wordmark for editorial use" },
-  { label: "Monogram · SVG", note: "Voranox V monogram, gold on midnight" },
-  { label: "Brand Guide · PDF", note: "Color, typography, and usage standards" },
-  { label: "Fact Sheet · PDF", note: "One-page overview for press desks" },
-  { label: "Photography · ZIP", note: "Approved imagery, available on request" },
+  {
+    label: "Wordmark · SVG",
+    note: "Vector wordmark for editorial use",
+    href: "/brand/voranox-wordmark.svg",
+    download: true,
+  },
+  {
+    label: "Monogram · SVG",
+    note: "Voranox V monogram, gold on midnight",
+    href: "/brand/voranox-monogram.svg",
+    download: true,
+  },
+  {
+    label: "Brand Standards",
+    note: "Color, typography, and usage — full guide",
+    href: "/brand",
+    download: false,
+  },
+  {
+    label: "Fact Sheet · On request",
+    note: "One-page signed overview for press desks",
+    href: "mailto:press@voranox.com",
+    download: false,
+  },
+  {
+    label: "Photography · On request",
+    note: "Approved imagery available under embargo",
+    href: "mailto:press@voranox.com",
+    download: false,
+  },
 ];
 
 export default function PressPage() {
@@ -112,18 +137,23 @@ export default function PressPage() {
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-gold/10 border border-gold/15">
             {kit.map((item, i) => (
-              <div key={item.label} className="bg-midnight p-8">
+              <a
+                key={item.label}
+                href={item.href}
+                {...(item.download ? { download: true } : {})}
+                className="bg-midnight p-8 block hover:bg-midnight-100 transition group"
+              >
                 <p className="font-serif text-gold text-xl mb-3">
                   {String(i + 1).padStart(2, "0")}
                 </p>
-                <p className="font-serif text-xl text-ivory mb-2">
+                <p className="font-serif text-xl text-ivory mb-2 group-hover:gold-text">
                   {item.label}
                 </p>
                 <p className="text-sm text-ivory/55 mb-5">{item.note}</p>
                 <p className="text-[10px] tracking-[0.3em] uppercase text-gold/60">
-                  Available on request
+                  {item.download ? "Download →" : "Open →"}
                 </p>
-              </div>
+              </a>
             ))}
           </div>
           <p className="mt-8 text-xs text-ivory/50">
