@@ -74,6 +74,7 @@ export default async function PlatformPage({
               "financial-services": { href: "/sterling", label: "Preview Command Center" },
               healthcare: { href: "/vitae", label: "Preview Clinical Co-Pilot" },
               defense: { href: "/sentinel", label: "Preview Mission Picture" },
+              government: { href: "/civitas", label: "Preview Operations Center" },
             };
             const preview = previewMap[sector.slug];
             return (

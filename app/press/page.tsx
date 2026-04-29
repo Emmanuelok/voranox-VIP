@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { releases } from "@/lib/releases";
 
 export const metadata: Metadata = {
   title: "Press",
@@ -16,14 +17,6 @@ const factSheet = [
   { label: "Tagline", value: "Intelligence, refined." },
 ];
 
-const releases = [
-  {
-    date: "Forthcoming",
-    title: "Voranox Inc. announces the firm and its initial platform directory.",
-    summary:
-      "Inaugural press release introducing Voranox Inc., the parent company architecting intelligent platforms across every industry, sector, and institution.",
-  },
-];
 
 const kit = [
   {
@@ -220,21 +213,31 @@ export default function PressPage() {
           </h2>
           <ul className="border border-gold/15">
             {releases.map((r) => (
-              <li
-                key={r.title}
-                className="grid md:grid-cols-12 gap-4 px-6 py-8 border-t border-gold/15 first:border-t-0"
-              >
-                <div className="md:col-span-2">
-                  <p className="text-[10px] tracking-[0.35em] uppercase text-gold/70">
-                    {r.date}
-                  </p>
-                </div>
-                <div className="md:col-span-10">
-                  <p className="font-serif text-2xl text-ivory">{r.title}</p>
-                  <p className="mt-2 text-ivory/65 text-sm leading-relaxed">
-                    {r.summary}
-                  </p>
-                </div>
+              <li key={r.slug} className="border-t border-gold/15 first:border-t-0">
+                <Link
+                  href={`/press/${r.slug}`}
+                  className="grid md:grid-cols-12 gap-4 px-6 py-8 hover:bg-midnight-100/40 transition group"
+                >
+                  <div className="md:col-span-2">
+                    <p className="text-[10px] tracking-[0.35em] uppercase text-gold/70">
+                      {r.date}
+                    </p>
+                    <p className="text-[10px] text-ivory/40 mt-1">
+                      {r.dateline}
+                    </p>
+                  </div>
+                  <div className="md:col-span-10">
+                    <p className="font-serif text-2xl text-ivory group-hover:gold-text leading-snug">
+                      {r.headline}
+                    </p>
+                    <p className="mt-3 text-ivory/65 text-sm leading-relaxed">
+                      {r.summary}
+                    </p>
+                    <p className="mt-3 text-xs tracking-[0.3em] uppercase text-gold/70">
+                      Read full release →
+                    </p>
+                  </div>
+                </Link>
               </li>
             ))}
           </ul>

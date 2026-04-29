@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { sectors } from "@/lib/sectors";
 import { essays } from "@/lib/insights";
+import { releases } from "@/lib/releases";
 
 const SITE = "https://voranox.com";
 
@@ -18,9 +19,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/brand",
     "/careers",
     "/contact",
+    "/announce",
     "/sterling",
     "/vitae",
     "/sentinel",
+    "/civitas",
   ].map((path) => ({
     url: `${SITE}${path}`,
     lastModified: now,
@@ -42,5 +45,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }));
 
-  return [...staticRoutes, ...platformRoutes, ...essayRoutes];
+  const releaseRoutes: MetadataRoute.Sitemap = releases.map((r) => ({
+    url: `${SITE}/press/${r.slug}`,
+    lastModified: now,
+    changeFrequency: "monthly",
+    priority: 0.6,
+  }));
+
+  return [...staticRoutes, ...platformRoutes, ...essayRoutes, ...releaseRoutes];
 }
