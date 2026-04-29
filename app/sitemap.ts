@@ -24,6 +24,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/vitae",
     "/sentinel",
     "/civitas",
+    "/fr",
+    "/es",
+    "/ar",
+    "/zh",
   ].map((path) => ({
     url: `${SITE}${path}`,
     lastModified: now,

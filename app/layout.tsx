@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
@@ -32,6 +34,14 @@ export const metadata: Metadata = {
     type: "website",
   },
   alternates: {
+    canonical: "https://voranox.com",
+    languages: {
+      en: "https://voranox.com",
+      fr: "https://voranox.com/fr",
+      es: "https://voranox.com/es",
+      ar: "https://voranox.com/ar",
+      zh: "https://voranox.com/zh",
+    },
     types: {
       "application/rss+xml": [
         { url: "/insights/feed.xml", title: "Voranox Insights" },
@@ -90,6 +100,8 @@ export default function RootLayout({
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );

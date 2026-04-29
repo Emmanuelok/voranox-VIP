@@ -76,8 +76,15 @@ export function Footer() {
       </div>
 
       <div className="border-t border-gold/10">
-        <div className="max-w-7xl mx-auto px-6 lg:px-10 py-6 flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-ivory/40">
+        <div className="max-w-7xl mx-auto px-6 lg:px-10 py-6 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-ivory/40">
           <p>© {new Date().getFullYear()} Voranox Inc. All rights reserved.</p>
+          <div className="flex items-center gap-4">
+            <Link href="/" className="hover:text-gold">EN</Link>
+            <Link href="/fr" className="hover:text-gold">FR</Link>
+            <Link href="/es" className="hover:text-gold">ES</Link>
+            <Link href="/ar" className="hover:text-gold">العربية</Link>
+            <Link href="/zh" className="hover:text-gold">中文</Link>
+          </div>
           <p className="tracking-[0.3em] uppercase">
             The Intelligence Standard
           </p>

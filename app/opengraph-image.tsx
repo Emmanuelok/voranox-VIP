@@ -1,4 +1,5 @@
 import { ImageResponse } from "next/og";
+import { loadPlayfair } from "@/lib/ogFont";
 
 export const runtime = "edge";
 export const alt = "Voranox Inc. — Intelligence for Every Industry";
@@ -6,6 +7,7 @@ export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
 export default async function OpengraphImage() {
+  const playfair = await loadPlayfair();
   return new ImageResponse(
     (
       <div
@@ -18,7 +20,7 @@ export default async function OpengraphImage() {
             "radial-gradient(ellipse at top, rgba(201,169,97,0.18), transparent 60%), #050816",
           color: "#F5F1E8",
           padding: "80px",
-          fontFamily: "Georgia, serif",
+          fontFamily: playfair ? "Playfair, Georgia, serif" : "Georgia, serif",
         }}
       >
         <div
@@ -99,6 +101,11 @@ export default async function OpengraphImage() {
         </div>
       </div>
     ),
-    { ...size }
+    {
+      ...size,
+      fonts: playfair
+        ? [{ name: "Playfair", data: playfair, style: "normal", weight: 600 }]
+        : undefined,
+    },
   );
 }

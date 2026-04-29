@@ -1,5 +1,6 @@
 import { ImageResponse } from "next/og";
 import { sectorsBySlug, sectors } from "@/lib/sectors";
+import { loadPlayfair } from "@/lib/ogFont";
 
 export const alt = "Voranox Platform";
 export const size = { width: 1200, height: 630 };
@@ -35,6 +36,8 @@ export default async function PlatformOG({
     return new ImageResponse(<div />, { ...size });
   }
 
+  const playfair = await loadPlayfair();
+
   return new ImageResponse(
     (
       <div
@@ -47,7 +50,7 @@ export default async function PlatformOG({
             "radial-gradient(ellipse at top right, rgba(201,169,97,0.22), transparent 55%), #050816",
           color: "#F5F1E8",
           padding: "72px 80px",
-          fontFamily: "Georgia, serif",
+          fontFamily: playfair ? "Playfair, Georgia, serif" : "Georgia, serif",
         }}
       >
         <div
@@ -142,6 +145,11 @@ export default async function PlatformOG({
         </div>
       </div>
     ),
-    { ...size }
+    {
+      ...size,
+      fonts: playfair
+        ? [{ name: "Playfair", data: playfair, style: "normal", weight: 600 }]
+        : undefined,
+    },
   );
 }
