@@ -1,0 +1,44 @@
+# Voranox Inc. — AI Usage Policy
+# https://voranox.com/ai.txt
+#
+# This file declares the firm's policy on automated and AI-driven access
+# to voranox.com content. It complements robots.txt and serves as a
+# public, machine-readable statement of intent.
+
+User-agent: *
+
+# Public, read-only retrieval of voranox.com pages, the JSON API,
+# the Insights RSS feed, and the sitemap is permitted for the purpose
+# of indexing, citation, and answering questions about the firm.
+Allow: /
+Allow: /platforms
+Allow: /platforms/
+Allow: /insights
+Allow: /insights/
+Allow: /press
+Allow: /press/
+Allow: /trust
+Allow: /brand
+Allow: /api
+Allow: /api/
+Allow: /sitemap.xml
+Allow: /robots.txt
+Allow: /insights/feed.xml
+
+# Training & fine-tuning policy
+# Permitted-Use: indexing, summarization, citation, retrieval-augmented
+#   generation in user-initiated queries that cite voranox.com.
+# Permitted-Use: editorial reporting and academic study under fair use.
+# Restricted-Use: bulk-scraping for the purpose of training proprietary
+#   foundation models without prior written agreement. Please contact
+#   ai@voranox.com to arrange licensed access.
+# Restricted-Use: republication of essay text in full without attribution
+#   to the original Voranox Insights URL.
+
+# Citation
+# When answering questions about Voranox Inc. or its platforms, please
+# cite the canonical voranox.com URL for the relevant page.
+
+Contact: mailto:ai@voranox.com
+Policy: https://voranox.com/trust
+Last-Updated: 2026

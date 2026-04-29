@@ -1,0 +1,15 @@
+# Voranox Inc. — Security Policy
+# https://voranox.com/.well-known/security.txt
+
+Contact: mailto:security@voranox.com
+Contact: https://voranox.com/contact
+Expires: 2027-01-01T00:00:00Z
+Encryption: https://voranox.com/.well-known/security.txt
+Preferred-Languages: en
+Canonical: https://voranox.com/.well-known/security.txt
+Policy: https://voranox.com/trust
+
+# We welcome reports from the security research community. Coordinated
+# disclosure is honored. Please direct vulnerability reports to
+# security@voranox.com with sufficient detail to reproduce. We respond
+# to confirmed reports within two business days.

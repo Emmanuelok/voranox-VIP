@@ -32,8 +32,36 @@ export default async function EssayPage({
 
   const others = essays.filter((e) => e.slug !== essay.slug);
 
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: essay.title,
+    description: essay.subtitle,
+    author: { "@type": "Organization", name: essay.byline },
+    publisher: {
+      "@type": "Organization",
+      name: "Voranox Inc.",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://voranox.com/icon.svg",
+      },
+    },
+    inLanguage: "en",
+    isPartOf: {
+      "@type": "Periodical",
+      name: "Voranox Insights",
+      url: "https://voranox.com/insights",
+    },
+    url: `https://voranox.com/insights/${essay.slug}`,
+    keywords: [essay.category, "Voranox", "Voranox Inc."],
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
       <section className="relative noise border-b border-gold/15">
         <div className="absolute inset-0 bg-midnight-glow pointer-events-none" />
         <div className="relative max-w-3xl mx-auto px-6 lg:px-10 py-24 lg:py-32">

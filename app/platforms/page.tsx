@@ -9,8 +9,27 @@ export const metadata: Metadata = {
 };
 
 export default function PlatformsIndexPage() {
+  const itemListSchema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "Voranox Platform Directory",
+    description:
+      "The complete directory of Voranox intelligent platforms across every industry.",
+    numberOfItems: sectors.length,
+    itemListElement: sectors.map((s, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      url: `https://voranox.com/platforms/${s.slug}`,
+      name: `${s.platform} — ${s.name}`,
+    })),
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }}
+      />
       <section className="relative noise border-b border-gold/15">
         <div className="absolute inset-0 bg-midnight-glow pointer-events-none" />
         <div className="relative max-w-7xl mx-auto px-6 lg:px-10 py-24 lg:py-32">

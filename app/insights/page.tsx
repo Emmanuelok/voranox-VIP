@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { essays } from "@/lib/insights";
+import { InsightsSubscribe } from "@/components/InsightsSubscribe";
 
 export const metadata: Metadata = {
   title: "Insights",
@@ -27,6 +28,22 @@ export default function InsightsPage() {
             essays on the practice of building intelligent platforms for
             consequential institutions. New pieces are added on a deliberate
             cadence.
+          </p>
+        </div>
+      </section>
+
+      <section className="border-b border-gold/15">
+        <div className="max-w-5xl mx-auto px-6 lg:px-10 py-16">
+          <InsightsSubscribe />
+          <p className="mt-6 text-xs text-ivory/45">
+            Or subscribe via{" "}
+            <a
+              href="/insights/feed.xml"
+              className="text-gold hover:text-gold-light underline-offset-4 hover:underline"
+            >
+              RSS
+            </a>
+            .
           </p>
         </div>
       </section>

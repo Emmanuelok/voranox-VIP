@@ -128,6 +128,26 @@ When a platform is ready to ship as its own surface, point its subdomain to the 
 
 The `href` on each `Sector` in `lib/sectors.ts` already uses these subdomain conventions.
 
+## Public Surfaces
+
+The site exposes several non-page surfaces useful for press, partners, and AI agents:
+
+| Surface | URL | Purpose |
+| --- | --- | --- |
+| API index | `/api` | Discovery endpoint listing all public APIs |
+| Platforms API | `/api/platforms` | JSON of all 46 platforms |
+| Insights API | `/api/insights` | JSON list of essays |
+| Releases API | `/api/releases` | JSON list of press releases |
+| Insights RSS | `/insights/feed.xml` | RSS 2.0 feed of all essays |
+| Sitemap | `/sitemap.xml` | All routes |
+| Robots | `/robots.txt` | Crawl policy |
+| Security policy | `/.well-known/security.txt` | RFC 9116 |
+| AI policy | `/ai.txt` | Public AI / training-data policy |
+
+A sitewide command palette (⌘K / Ctrl+K) searches platforms, essays, releases, and pages.
+
+For the contact-form Resend setup, see "Production Setup (Vercel)" above. To enable the Insights newsletter, additionally set `RESEND_AUDIENCE_ID` (the audience UUID from your Resend dashboard) in environment variables.
+
 ## Brand Notes
 
 - **Voice:** restrained, classical, sovereign-grade. Avoid hype words.

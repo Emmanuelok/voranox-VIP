@@ -35,8 +35,38 @@ export default async function PlatformPage({
     .slice(0, 3);
   const deep = sector.deep;
 
+  const serviceSchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: sector.platform,
+    alternateName: `${sector.platform} — ${sector.name}`,
+    description: deep?.longTagline ?? sector.description,
+    provider: {
+      "@type": "Organization",
+      name: "Voranox Inc.",
+      url: "https://voranox.com",
+    },
+    serviceType: sector.category,
+    areaServed: "Worldwide",
+    url: `https://voranox.com/platforms/${sector.slug}`,
+    category: sector.name,
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: `${sector.platform} capabilities`,
+      itemListElement: sector.capabilities.map((c, i) => ({
+        "@type": "Offer",
+        position: i + 1,
+        itemOffered: { "@type": "Service", name: c },
+      })),
+    },
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+      />
       {/* HERO */}
       <section className="relative noise border-b border-gold/15">
         <div className="absolute inset-0 bg-midnight-glow pointer-events-none" />

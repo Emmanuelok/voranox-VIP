@@ -31,6 +31,13 @@ export const metadata: Metadata = {
       "The parent company building Voranox intelligent platforms across every industry, sector, and institution worldwide.",
     type: "website",
   },
+  alternates: {
+    types: {
+      "application/rss+xml": [
+        { url: "/insights/feed.xml", title: "Voranox Insights" },
+      ],
+    },
+  },
 };
 
 const organizationSchema = {

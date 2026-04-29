@@ -30,8 +30,30 @@ export default async function ReleasePage({
   const release = releaseBySlug(slug);
   if (!release) notFound();
 
+  const newsSchema = {
+    "@context": "https://schema.org",
+    "@type": "NewsArticle",
+    headline: release.headline,
+    description: release.summary,
+    publisher: {
+      "@type": "Organization",
+      name: "Voranox Inc.",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://voranox.com/icon.svg",
+      },
+    },
+    author: { "@type": "Organization", name: "Voranox Inc." },
+    inLanguage: "en",
+    url: `https://voranox.com/press/${release.slug}`,
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(newsSchema) }}
+      />
       <section className="relative noise border-b border-gold/15">
         <div className="absolute inset-0 bg-midnight-glow pointer-events-none" />
         <div className="relative max-w-3xl mx-auto px-6 lg:px-10 py-24 lg:py-32">
