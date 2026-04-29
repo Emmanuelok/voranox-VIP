@@ -54,6 +54,7 @@ export function Footer() {
               <li><Link href="/practices" className="hover:text-gold">Practices</Link></li>
               <li><Link href="/trust" className="hover:text-gold">Trust</Link></li>
               <li><Link href="/insights" className="hover:text-gold">Insights</Link></li>
+              <li><Link href="/press" className="hover:text-gold">Press</Link></li>
               <li><Link href="/careers" className="hover:text-gold">Careers</Link></li>
               <li><Link href="/contact" className="hover:text-gold">Contact</Link></li>
             </ul>

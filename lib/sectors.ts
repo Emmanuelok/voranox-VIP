@@ -137,6 +137,68 @@ export const sectors: Sector[] = [
       "Regulatory strategy",
     ],
     href: "https://helix.voranox.com",
+    deep: {
+      longTagline:
+        "Helix is the intelligence platform for the discovery, development, and stewardship of medicines — engineered to the cadence and standard of regulated life science.",
+      manifesto:
+        "Drug development is a multi-decade act of patience, capital, and scientific discipline. Voranox Helix exists to compress the parts of that journey that should be compressed, and to safeguard the parts that should not. From target identification to pharmacovigilance, Helix is engineered to the cadence of regulated life science — and to the moral stakes of medicine.",
+      pillars: [
+        {
+          name: "Discovery",
+          body: "Target identification, validation, and drug design intelligence — engineered for medicinal chemists, biologists, and computational discovery teams.",
+        },
+        {
+          name: "Clinical Development",
+          body: "Trial design, site selection, recruitment, and operations intelligence — calibrated to ICH-GCP and the realities of multi-region clinical execution.",
+        },
+        {
+          name: "Pharmacovigilance",
+          body: "Real-world signal detection, case processing, and regulatory reporting intelligence at global scale — engineered for safety teams and DSURs.",
+        },
+        {
+          name: "Regulatory & Market Access",
+          body: "Regulatory strategy, dossier intelligence, and HTA/payer evidence synthesis for global filings and market access programs.",
+        },
+      ],
+      useCases: [
+        {
+          title: "Target identification at literature scale",
+          body: "Continuous synthesis of biomedical literature, omics, and preclinical evidence — to surface the targets a translational team would otherwise take months to find.",
+        },
+        {
+          title: "Adaptive trial design",
+          body: "Trial design, site selection, and recruitment intelligence — calibrated to historical execution data and engineered for protocol amendments at scale.",
+        },
+        {
+          title: "Continuous pharmacovigilance",
+          body: "Global signal detection across spontaneous reports, literature, and real-world data — with case processing automation and regulator-ready output.",
+        },
+        {
+          title: "HTA and payer evidence",
+          body: "Synthesis of comparative effectiveness, budget impact, and patient evidence into the dossier the payer or HTA body actually needs.",
+        },
+      ],
+      clients: [
+        "Top-20 Pharmaceutical Companies",
+        "Clinical-Stage Biotech",
+        "Contract Research Organizations",
+        "Regulatory Agencies",
+        "HTA & Payer Bodies",
+        "Patient Advocacy Organizations",
+      ],
+      metrics: [
+        { value: "ICH-GCP", label: "Regulated by design" },
+        { value: "GxP", label: "Validated quality posture" },
+        { value: "Global", label: "FDA, EMA, MHRA, PMDA, NMPA" },
+        { value: "Provenanced", label: "Every claim, traceable" },
+      ],
+      doctrine: [
+        "Medicine is sacred. The model serves it.",
+        "Patient safety is the floor, not a feature.",
+        "Every claim is traceable to its evidence.",
+        "Regulation is the standard, not the obstacle.",
+      ],
+    },
   },
   {
     slug: "financial-services",
@@ -247,6 +309,68 @@ export const sectors: Sector[] = [
       "ESG analytics",
     ],
     href: "https://meridian.voranox.com",
+    deep: {
+      longTagline:
+        "Meridian is the research and risk platform for the institutions that allocate the world's capital.",
+      manifesto:
+        "Capital markets reward those who find signal where others find noise — and punish those who confuse one for the other. Voranox Meridian is the research, risk, and execution intelligence layer for the funds, allocators, and market makers whose results are measured to the basis point. Meridian is built to the standard of the institutions that have to be right, repeatedly, across cycles.",
+      pillars: [
+        {
+          name: "Research & Signal",
+          body: "Continuous research synthesis across filings, transcripts, alternative data, and academic literature — distilled into the signal an analyst would actually act on.",
+        },
+        {
+          name: "Portfolio & Risk",
+          body: "Portfolio construction, attribution, and risk intelligence across asset classes — engineered for the rigor of institutional risk committees.",
+        },
+        {
+          name: "Private Markets",
+          body: "Sourcing, diligence, and portfolio monitoring intelligence for private equity, venture, infrastructure, and credit — fully integrated with the public-market view.",
+        },
+        {
+          name: "ESG & Stewardship",
+          body: "Materiality-driven ESG, climate-risk, and stewardship intelligence — engineered for fiduciary use, not for marketing.",
+        },
+      ],
+      useCases: [
+        {
+          title: "Continuous earnings and filing intelligence",
+          body: "Automated synthesis of 10-Ks, 10-Qs, transcripts, and global equivalents — with the granularity an analyst needs and the citations the IC demands.",
+        },
+        {
+          title: "Cross-asset portfolio risk",
+          body: "Live attribution, scenario, and stress intelligence across equities, fixed income, FX, commodities, and private holdings.",
+        },
+        {
+          title: "Private-market diligence",
+          body: "Sourcing and diligence intelligence for PE and venture — including market sizing, competitive dynamics, and portfolio overlap.",
+        },
+        {
+          title: "Climate and transition risk",
+          body: "Forward-looking climate and transition risk modeling at the security level — calibrated to fiduciary, not narrative, standards.",
+        },
+      ],
+      clients: [
+        "Hedge Funds & Multi-Strategy Firms",
+        "Private Equity & Venture Capital",
+        "Sovereign Wealth Funds",
+        "Pension & Endowment Funds",
+        "Asset Managers & Insurers",
+        "Market Makers & Prop Firms",
+      ],
+      metrics: [
+        { value: "Cross-asset", label: "Public and private, one fabric" },
+        { value: "Attribution-grade", label: "Every basis point traceable" },
+        { value: "Discreet", label: "Holdings remain the client's" },
+        { value: "Audited", label: "Every signal, every decision" },
+      ],
+      doctrine: [
+        "The model that cannot be explained will not be deployed.",
+        "Backtest is hypothesis. Live is evidence.",
+        "Holdings are the client's. Always.",
+        "Fiduciary duty is the only standard we recognize.",
+      ],
+    },
   },
   {
     slug: "government",
@@ -419,6 +543,68 @@ export const sectors: Sector[] = [
       "Strategic foresight",
     ],
     href: "https://oracle.voranox.com",
+    deep: {
+      longTagline:
+        "Oracle is the strategic-foresight platform for ministries of foreign affairs, intelligence services, and the institutions that author the long view.",
+      manifesto:
+        "Diplomacy and statecraft are professions of foresight under conditions of permanent ambiguity. Voranox Oracle gathers, synthesizes, and stress-tests the open and lawful evidence base required for sovereign decisions — and presents it with the confidence bands, provenance, and dissent that strategic decisions deserve. Oracle does not predict the future. It equips the institutions that must act on it.",
+      pillars: [
+        {
+          name: "OSINT Synthesis",
+          body: "Continuous synthesis of open-source intelligence across languages, jurisdictions, and modalities — with provenance to the originating source and confidence on every claim.",
+        },
+        {
+          name: "Geopolitical Modeling",
+          body: "Scenario, wargame, and policy-impact modeling for foreign ministries and policy planning staffs — calibrated against historical evidence, not vibes.",
+        },
+        {
+          name: "Sanctions & Economic Statecraft",
+          body: "Sanctions design, evasion analysis, and economic-statecraft intelligence for Treasury, MoFA, and central bank counterparts.",
+        },
+        {
+          name: "Strategic Foresight",
+          body: "Long-horizon trend, capability, and risk monitoring — engineered for the multi-administration time scale that statecraft requires.",
+        },
+      ],
+      useCases: [
+        {
+          title: "Ambassador-grade country briefs",
+          body: "Continuously updated, evidence-cited country and region briefs — produced at the depth of a foreign-ministry analyst, at the speed of a morning's preparation.",
+        },
+        {
+          title: "Sanctions design and impact modeling",
+          body: "Model the first, second, and third-order economic impact of sanctions packages — including evasion pathways and humanitarian carve-outs.",
+        },
+        {
+          title: "Wargaming and crisis exercises",
+          body: "Multi-actor, multi-scenario wargames for crisis cells and policy planning staffs — with traceable assumptions and structured dissent.",
+        },
+        {
+          title: "Long-horizon foresight monitoring",
+          body: "Continuous monitoring of strategic trend lines — capability, demographic, technological, climatic — across the time scales that outlast any administration.",
+        },
+      ],
+      clients: [
+        "Ministries of Foreign Affairs",
+        "Intelligence Communities",
+        "Treasuries & Sanctions Authorities",
+        "Multilateral Diplomatic Bodies",
+        "Strategic Policy Planning Staffs",
+        "Sovereign Wealth & Reserve Managers",
+      ],
+      metrics: [
+        { value: "Open-source", label: "Lawful collection only" },
+        { value: "40+", label: "Languages, native fluency" },
+        { value: "Cited", label: "Every claim, every time" },
+        { value: "Discreet", label: "Engagement by default" },
+      ],
+      doctrine: [
+        "Oracle does not collect what is not lawfully open.",
+        "We model. We do not predict.",
+        "Dissent is preserved, not averaged away.",
+        "The decision belongs to the diplomat. Always.",
+      ],
+    },
   },
   {
     slug: "law-enforcement",
@@ -499,6 +685,68 @@ export const sectors: Sector[] = [
       "Digital twins",
     ],
     href: "https://forge.voranox.com",
+    deep: {
+      longTagline:
+        "Forge is the operating intelligence of the modern factory and the global industrial network it sits inside.",
+      manifesto:
+        "Manufacturing is the discipline that turns molecules into machines, and machines into the substrate of every other industry. Voranox Forge is the intelligence layer for the engineers, operators, and operations leaders who keep that substrate moving — from a single line to a global network. Forge is engineered for the shop floor first, the boardroom second, and the supply chain that connects them throughout.",
+      pillars: [
+        {
+          name: "Asset & Reliability",
+          body: "Predictive maintenance, condition monitoring, and reliability engineering across discrete and process plants.",
+        },
+        {
+          name: "Quality & Yield",
+          body: "Process and quality intelligence — turning the millions of measurements a modern plant produces into the few that matter.",
+        },
+        {
+          name: "Supply Chain",
+          body: "Demand, inventory, and network intelligence across multi-tier supply chains — calibrated for resilience, not just efficiency.",
+        },
+        {
+          name: "Digital Twin",
+          body: "Continuous digital twins of plants, lines, and networks — engineered for engineering teams, not for marketing slides.",
+        },
+      ],
+      useCases: [
+        {
+          title: "Predictive maintenance at fleet scale",
+          body: "Continuous monitoring of rotating equipment, motors, and process assets — with prioritized work orders the plant team actually trusts.",
+        },
+        {
+          title: "Quality intelligence at the line",
+          body: "Real-time process and quality intelligence — surfacing the upstream cause of the downstream defect before the lot is built.",
+        },
+        {
+          title: "Multi-tier supply visibility",
+          body: "Continuous visibility across tier-1, tier-2, and tier-3 suppliers — with risk, exposure, and substitution intelligence at SKU granularity.",
+        },
+        {
+          title: "Plant and network digital twins",
+          body: "Living digital twins of plants, lines, and global networks — used for design, debottlenecking, and what-if planning.",
+        },
+      ],
+      clients: [
+        "Discrete Manufacturers",
+        "Process & Chemical Manufacturers",
+        "Industrial Conglomerates",
+        "Tier-1 Automotive & Aerospace",
+        "Consumer Goods Manufacturers",
+        "Industrial Equipment OEMs",
+      ],
+      metrics: [
+        { value: "OT-native", label: "Engineered for the plant floor" },
+        { value: "ISA-95", label: "Aligned to industrial reality" },
+        { value: "Edge-capable", label: "Runs where the steel runs" },
+        { value: "Multi-site", label: "From one plant to one network" },
+      ],
+      doctrine: [
+        "We respect the engineer who runs the line.",
+        "OT is not IT. We engineer for both, separately.",
+        "Reliability is a discipline, not a dashboard.",
+        "Every recommendation must survive the shop-floor test.",
+      ],
+    },
   },
   {
     slug: "automotive",
@@ -755,6 +1003,68 @@ export const sectors: Sector[] = [
       "Resilience modeling",
     ],
     href: "https://bastion.voranox.com",
+    deep: {
+      longTagline:
+        "Bastion is the intelligence and autonomy layer that turns the modern SOC from a queue of alerts into a system of defense.",
+      manifesto:
+        "Cyber defense is the only profession where the adversary writes the test, grades the answer, and takes the consequences. Voranox Bastion exists to give defenders the patience, scale, and continuity that human teams alone cannot sustain — without surrendering the human judgment that defense ultimately requires. Bastion is engineered to the standards of the CISOs, SOCs, and national cyber commands whose mandate does not allow for failure.",
+      pillars: [
+        {
+          name: "Threat Intelligence",
+          body: "Continuous fusion of internal telemetry, vendor feeds, dark-web sources, and open-source signal — distilled into the threat picture that decisions are actually made from.",
+        },
+        {
+          name: "Exposure Management",
+          body: "Asset, identity, and configuration intelligence across the enterprise — quantified by exploitability, blast radius, and priority of remediation.",
+        },
+        {
+          name: "SOC Autonomy",
+          body: "Tier-1 and Tier-2 triage, enrichment, and response automation — bounded by policy, audited end-to-end, and reviewable by the analyst at any step.",
+        },
+        {
+          name: "Resilience Modeling",
+          body: "Continuous resilience and recoverability modeling — answering not just whether you will be breached, but how quickly you will recover.",
+        },
+      ],
+      useCases: [
+        {
+          title: "Autonomous SOC Tier-1",
+          body: "Triage, enrichment, and containment of routine alerts at machine speed — with full evidentiary chain to the originating signal and human escalation on novelty.",
+        },
+        {
+          title: "Exposure prioritization at enterprise scale",
+          body: "Continuously scored exposure across assets, identities, and configurations — turning the CVE backlog into a ranked list of what an adversary would actually exploit.",
+        },
+        {
+          title: "Threat-led briefings",
+          body: "CISO and board-grade briefings on the threats that actually matter to your sector, your geography, and your stack — with explicit confidence and source.",
+        },
+        {
+          title: "Tabletop & resilience exercises",
+          body: "Continuous, scenario-driven exercising of incident response, recovery, and crisis communications — calibrated to the institution's risk profile.",
+        },
+      ],
+      clients: [
+        "CISOs of Global Enterprises",
+        "Financial-Sector ISACs",
+        "Critical-Infrastructure Operators",
+        "National Cyber Commands & CERTs",
+        "Defense & Intelligence Agencies",
+        "Managed Security Providers",
+      ],
+      metrics: [
+        { value: "24/7/365", label: "Continuous defense posture" },
+        { value: "Sub-minute", label: "Tier-1 triage latency" },
+        { value: "Audited", label: "Every action, replayable" },
+        { value: "Sovereign", label: "Deployable in-jurisdiction" },
+      ],
+      doctrine: [
+        "The defender's mistake is the adversary's payday — we engineer for the defender's good day.",
+        "Automation is bounded by policy, not by ambition.",
+        "Every action is reviewable. Always.",
+        "The human analyst is the institution's last and best instrument.",
+      ],
+    },
   },
   {
     slug: "education",
@@ -1011,6 +1321,68 @@ export const sectors: Sector[] = [
       "Geospatial intelligence",
     ],
     href: "https://stellar.voranox.com",
+    deep: {
+      longTagline:
+        "Stellar is the intelligence platform for the operators and observers of the orbital domain — from earth observation to constellation operations to space situational awareness.",
+      manifesto:
+        "Space is no longer a frontier; it is an operating environment. Voranox Stellar exists to turn the firehose of orbital data — imagery, telemetry, signals, ephemeris — into the intelligence that civil, defense, and commercial space operators actually decide from. From flood maps to fleet operations to space domain awareness, Stellar serves the full spectrum of the orbital economy.",
+      pillars: [
+        {
+          name: "Earth Observation",
+          body: "Multi-sensor EO intelligence across optical, SAR, and hyperspectral — engineered for civil agencies, defense, climate, and commercial monitoring.",
+        },
+        {
+          name: "Constellation Operations",
+          body: "Mission planning, conjunction assessment, and fleet operations intelligence for satellite operators of every scale.",
+        },
+        {
+          name: "Space Situational Awareness",
+          body: "Tracking, characterization, and intent assessment for the orbital domain — engineered for SDA centers and defense space commands.",
+        },
+        {
+          name: "Geospatial Intelligence",
+          body: "Activity-based intelligence and pattern-of-life analytics across the surface of the earth — derived from orbital and aerial collection.",
+        },
+      ],
+      useCases: [
+        {
+          title: "Disaster response imaging at speed",
+          body: "Rapid tasking, fusion, and dissemination of EO imagery for civil-protection agencies — turning flood, fire, and quake response from days to hours.",
+        },
+        {
+          title: "Fleet operations for constellations",
+          body: "Continuous mission planning, conjunction screening, and ground-segment optimization for operators of LEO and GEO constellations.",
+        },
+        {
+          title: "Space domain awareness",
+          body: "Persistent track, characterization, and intent assessment of the orbital catalogue — engineered for SDA centers and defense space commands.",
+        },
+        {
+          title: "Activity-based geospatial intelligence",
+          body: "Continuous monitoring of ports, airfields, infrastructure, and industrial activity at planetary scale — with confidence and provenance on every observation.",
+        },
+      ],
+      clients: [
+        "Civil Space Agencies",
+        "Defense Space Commands",
+        "Constellation Operators",
+        "Climate & Environmental Authorities",
+        "Insurance & Reinsurance",
+        "Geospatial Intelligence Agencies",
+      ],
+      metrics: [
+        { value: "Planet-scale", label: "Continuous monitoring" },
+        { value: "Multi-sensor", label: "Optical, SAR, hyperspectral" },
+        { value: "Sub-hour", label: "Tasking-to-product latency" },
+        { value: "Sovereign", label: "Deployable in-jurisdiction" },
+      ],
+      doctrine: [
+        "The orbital domain is shared. Stellar is engineered for stewardship, not dominance.",
+        "Every observation is provenanced to its sensor.",
+        "Confidence is reported. Uncertainty is not hidden.",
+        "Intelligence serves decision. Not the other way around.",
+      ],
+    },
   },
   {
     slug: "venture-private",

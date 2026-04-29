@@ -70,14 +70,23 @@ export default async function PlatformPage({
           )}
 
           <div className="mt-12 flex flex-wrap gap-4">
-            <a
-              href={sector.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 px-8 py-4 bg-gold-shine shimmer text-midnight text-xs tracking-[0.3em] uppercase font-medium"
-            >
-              Visit Platform <span aria-hidden>↗</span>
-            </a>
+            {sector.slug === "financial-services" ? (
+              <Link
+                href="/sterling"
+                className="inline-flex items-center gap-3 px-8 py-4 bg-gold-shine shimmer text-midnight text-xs tracking-[0.3em] uppercase font-medium"
+              >
+                Preview Command Center <span aria-hidden>→</span>
+              </Link>
+            ) : (
+              <a
+                href={sector.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-3 px-8 py-4 bg-gold-shine shimmer text-midnight text-xs tracking-[0.3em] uppercase font-medium"
+              >
+                Visit Platform <span aria-hidden>↗</span>
+              </a>
+            )}
             <Link
               href="/contact"
               className="inline-flex items-center gap-3 px-8 py-4 border border-ivory/20 text-ivory text-xs tracking-[0.3em] uppercase hover:border-gold hover:text-gold transition"

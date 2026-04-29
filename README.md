@@ -88,6 +88,46 @@ Edit `lib/sectors.ts` and add a `Sector` entry. The directory, home page, and in
 | `npm run lint` | ESLint |
 | `npm run typecheck` | TypeScript check |
 
+## Production Setup (Vercel)
+
+The site is deployed on Vercel. After your initial import, two manual steps remain to take it from "online" to "operational."
+
+### 1. Wire the contact form to email (Resend)
+
+The contact form's Server Action is already written. Without an API key it accepts inquiries and logs them to Vercel's runtime logs; with a key it delivers email.
+
+1. Sign up at **https://resend.com** (free tier covers 100 emails/day, 3k/month).
+2. Create an API key.
+3. Add a sending domain. Until your domain is verified, you can send `From: onboarding@resend.dev` for testing.
+4. In **Vercel → voranox-VIP → Settings → Environment Variables**, add the following for **Production** and **Preview**:
+
+| Name | Example value |
+| --- | --- |
+| `RESEND_API_KEY` | `re_...` (from Resend dashboard) |
+| `VORANOX_TO_EMAIL` | `briefings@voranox.com` |
+| `VORANOX_FROM_EMAIL` | `Voranox Inc. <briefings@voranox.com>` (after domain verification) or `Voranox Inc. <onboarding@resend.dev>` (sandbox) |
+
+5. Trigger a redeploy (Settings → Deployments → ⋯ → Redeploy, or just push a commit).
+
+### 2. Custom domain
+
+1. In **Vercel → voranox-VIP → Settings → Domains**, add `voranox.com` and `www.voranox.com`.
+2. Vercel will display the DNS records you need to set at your registrar:
+   - `A` record for `voranox.com` → `76.76.21.21`
+   - `CNAME` record for `www` → `cname.vercel-dns.com`
+3. Wait for propagation (typically minutes; up to a few hours).
+4. Once verified, set `voranox.com` as the **Primary Domain** in Vercel.
+5. The `metadataBase` in `app/layout.tsx` and the `SITE` constant in `app/sitemap.ts` and `app/robots.ts` are already configured for `https://voranox.com` — no code change needed.
+
+### 3. (Future) Sub-platform domains
+
+When a platform is ready to ship as its own surface, point its subdomain to the appropriate Vercel project:
+- `sterling.voranox.com` → Sterling project
+- `vitae.voranox.com` → Vitae project
+- etc.
+
+The `href` on each `Sector` in `lib/sectors.ts` already uses these subdomain conventions.
+
 ## Brand Notes
 
 - **Voice:** restrained, classical, sovereign-grade. Avoid hype words.
