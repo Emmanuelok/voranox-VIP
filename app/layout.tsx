@@ -88,8 +88,16 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  // Inline, executed before paint, so the theme is set on <html> before
+  // the first frame and we never flash the wrong palette. Reads the user
+  // preference from localStorage; supports 'light' | 'dark' | 'system'.
+  const themeInit = `(function(){try{var s=localStorage.getItem('voranox-theme');var t='dark';if(s==='light')t='light';else if(s==='dark')t='dark';else if(s==='system')t=window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',t);document.documentElement.style.colorScheme=t;}catch(e){}})();`;
+
   return (
-    <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
+    <html lang="en" className={`${inter.variable} ${playfair.variable}`} suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeInit }} />
+      </head>
       <body className="min-h-screen flex flex-col bg-midnight text-ivory antialiased">
         <script
           type="application/ld+json"

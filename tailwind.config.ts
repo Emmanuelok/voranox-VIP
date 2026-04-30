@@ -10,21 +10,21 @@ const config: Config = {
     extend: {
       colors: {
         midnight: {
-          DEFAULT: "#050816",
-          50: "#0A0E27",
-          100: "#0E1330",
-          200: "#141A3D",
-          300: "#1A224D",
+          DEFAULT: "rgb(var(--c-midnight) / <alpha-value>)",
+          50: "rgb(var(--c-midnight-50) / <alpha-value>)",
+          100: "rgb(var(--c-midnight-100) / <alpha-value>)",
+          200: "rgb(var(--c-midnight-200) / <alpha-value>)",
+          300: "rgb(var(--c-midnight-300) / <alpha-value>)",
         },
         gold: {
-          DEFAULT: "#C9A961",
-          light: "#E0C887",
-          dark: "#9E823F",
+          DEFAULT: "rgb(var(--c-gold) / <alpha-value>)",
+          light: "rgb(var(--c-gold-light) / <alpha-value>)",
+          dark: "rgb(var(--c-gold-dark) / <alpha-value>)",
         },
         ivory: {
-          DEFAULT: "#F5F1E8",
-          muted: "#C9C3B5",
-          dim: "#8A8576",
+          DEFAULT: "rgb(var(--c-ivory) / <alpha-value>)",
+          muted: "rgb(var(--c-ivory-muted) / <alpha-value>)",
+          dim: "rgb(var(--c-ivory-dim) / <alpha-value>)",
         },
       },
       fontFamily: {
@@ -33,9 +33,9 @@ const config: Config = {
       },
       backgroundImage: {
         "gold-shine":
-          "linear-gradient(135deg, #9E823F 0%, #C9A961 35%, #E0C887 50%, #C9A961 65%, #9E823F 100%)",
+          "linear-gradient(135deg, rgb(var(--c-gold-dark)) 0%, rgb(var(--c-gold)) 35%, rgb(var(--c-gold-light)) 50%, rgb(var(--c-gold)) 65%, rgb(var(--c-gold-dark)) 100%)",
         "midnight-glow":
-          "radial-gradient(ellipse at top, rgba(201,169,97,0.08), transparent 60%), radial-gradient(ellipse at bottom, rgba(20,26,61,0.6), transparent 60%)",
+          "radial-gradient(ellipse at top, rgb(var(--c-gold) / 0.08), transparent 60%), radial-gradient(ellipse at bottom, rgb(var(--c-midnight-200) / 0.6), transparent 60%)",
       },
       letterSpacing: {
         widest: "0.25em",

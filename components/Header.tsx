@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Logo } from "./Logo";
 import { CommandPalette } from "./CommandPalette";
+import { ThemeToggle } from "./ThemeToggle";
 import { commandIndex } from "@/lib/commandIndex";
 
 const nav = [
@@ -28,8 +29,9 @@ export function Header() {
             </Link>
           ))}
         </nav>
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-3">
           <CommandPalette items={commandIndex} />
+          <ThemeToggle />
           <Link
             href="/contact"
             className="hidden lg:inline-flex items-center gap-2 px-5 py-2.5 border border-gold/40 text-gold text-xs tracking-[0.25em] uppercase hover:bg-gold hover:text-midnight transition-all"
