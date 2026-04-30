@@ -67,6 +67,24 @@ export default async function PortalPage() {
             Materials prepared for your institution.
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-gold/10 border border-gold/15">
+            <Link
+              href="/portal/sterling"
+              className="bg-midnight p-8 hover:bg-midnight-100 transition group"
+            >
+              <p className="text-[10px] tracking-[0.35em] uppercase text-gold/70 mb-3">
+                Live · Sterling
+              </p>
+              <p className="font-serif text-xl text-ivory mb-3 group-hover:gold-text">
+                Command Center
+              </p>
+              <p className="text-sm text-ivory/55 leading-relaxed">
+                Live FX cross-rates against USD, sourced from the European
+                Central Bank reference feed. Continuously revalued.
+              </p>
+              <p className="mt-5 text-[10px] tracking-[0.3em] uppercase text-gold/80">
+                Open live →
+              </p>
+            </Link>
             <DossierCard
               kind="Briefing"
               title="Engagement Memorandum"

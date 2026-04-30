@@ -181,12 +181,32 @@ export default function SterlingPreviewPage() {
             tier-1 institutions. Briefings are available to qualified
             counterparts under NDA.
           </p>
-          <Link
-            href="/contact"
-            className="mt-12 inline-flex items-center gap-3 px-10 py-4 bg-gold-shine shimmer text-midnight text-xs tracking-[0.3em] uppercase font-medium"
-          >
-            Request a Confidential Briefing <span aria-hidden>→</span>
-          </Link>
+          <div className="mt-12 flex flex-wrap justify-center gap-4">
+            <Link
+              href="/portal/sterling"
+              className="inline-flex items-center gap-3 px-10 py-4 bg-gold-shine shimmer text-midnight text-xs tracking-[0.3em] uppercase font-medium"
+            >
+              Sign in for the Live Command Center{" "}
+              <span aria-hidden>→</span>
+            </Link>
+            <Link
+              href="/contact"
+              className="inline-flex items-center gap-3 px-10 py-4 border border-ivory/20 text-ivory text-xs tracking-[0.3em] uppercase hover:border-gold hover:text-gold transition"
+            >
+              Request a Confidential Briefing
+            </Link>
+          </div>
+          <p className="mt-6 text-xs text-ivory/45">
+            Live Command Center is portal-gated. Sign in with your
+            institutional email at{" "}
+            <Link
+              href="/portal/login"
+              className="text-gold hover:text-gold-light underline-offset-4 hover:underline"
+            >
+              /portal/login
+            </Link>
+            .
+          </p>
         </div>
       </section>
     </>
