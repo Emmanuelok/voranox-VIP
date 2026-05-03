@@ -15,6 +15,7 @@ import { sectors, type Sector } from "@/lib/sectors";
 import { essays, type Essay } from "@/lib/insights";
 import { releases, type Release } from "@/lib/releases";
 import { checkLimit, getClientIpFromRequest } from "@/lib/rateLimit";
+import { logEvent } from "@/lib/events";
 
 const SITE = "https://voranox.com";
 const PROTOCOL = "2025-06-18";
@@ -416,6 +417,7 @@ function dispatch(req: RpcRequest): RpcOk | RpcErr | null {
       case "tools/call": {
         const name = String(params.name ?? "");
         const args = (params.arguments as Record<string, unknown>) ?? {};
+        logEvent("mcp.call", { tool: name });
         return ok(id, callTool(name, args));
       }
       case "resources/list":
@@ -447,6 +449,7 @@ export async function POST(request: Request) {
     subject: ip,
   });
   if (!limit.allowed) {
+    logEvent("mcp.rate_limited", { ip, resetAt: limit.resetAt });
     return Response.json(err(null, -32099, "Rate limit exceeded"), {
       status: 429,
       headers: {

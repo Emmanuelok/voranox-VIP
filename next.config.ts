@@ -7,11 +7,12 @@ import type { NextConfig } from "next";
 // vitals.vercel-insights.com.
 const csp = [
   "default-src 'self'",
-  "script-src 'self' 'unsafe-inline' va.vercel-scripts.com",
+  "script-src 'self' 'unsafe-inline' va.vercel-scripts.com challenges.cloudflare.com",
   "style-src 'self' 'unsafe-inline'",
   "img-src 'self' data: blob:",
   "font-src 'self' data: fonts.gstatic.com",
-  "connect-src 'self' vitals.vercel-insights.com va.vercel-scripts.com",
+  "connect-src 'self' vitals.vercel-insights.com va.vercel-scripts.com challenges.cloudflare.com",
+  "frame-src challenges.cloudflare.com",
   "frame-ancestors 'none'",
   "base-uri 'self'",
   "form-action 'self' mailto:",

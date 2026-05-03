@@ -1,6 +1,7 @@
 "use client";
 
-import { useActionState } from "react";
+import { useActionState, useEffect, useRef } from "react";
+import Script from "next/script";
 import { useFormStatus } from "react-dom";
 import {
   requestMagicLink,
@@ -9,8 +10,42 @@ import {
 
 const initial: LoginState = { status: "idle" };
 
+const TURNSTILE_SITE_KEY = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
+
+declare global {
+  interface Window {
+    turnstile?: {
+      render: (
+        el: HTMLElement,
+        opts: { sitekey: string; theme?: "light" | "dark" | "auto" },
+      ) => string;
+    };
+  }
+}
+
 export function LoginForm() {
   const [state, action] = useActionState(requestMagicLink, initial);
+  const tsRef = useRef<HTMLDivElement | null>(null);
+
+  // Render the Turnstile widget when the script and host element are both ready.
+  useEffect(() => {
+    if (!TURNSTILE_SITE_KEY || !tsRef.current) return;
+    const tryRender = () => {
+      if (window.turnstile && tsRef.current && tsRef.current.childElementCount === 0) {
+        window.turnstile.render(tsRef.current, {
+          sitekey: TURNSTILE_SITE_KEY,
+          theme: "auto",
+        });
+      }
+    };
+    tryRender();
+    const i = setInterval(tryRender, 250);
+    const t = setTimeout(() => clearInterval(i), 5000);
+    return () => {
+      clearInterval(i);
+      clearTimeout(t);
+    };
+  }, []);
 
   if (state.status === "sent") {
     return (
@@ -78,6 +113,18 @@ export function LoginForm() {
           className="w-full bg-midnight border border-gold/20 px-4 py-3 text-ivory placeholder:text-ivory/40 focus:border-gold outline-none"
         />
       </div>
+
+      {TURNSTILE_SITE_KEY && (
+        <>
+          <Script
+            src="https://challenges.cloudflare.com/turnstile/v0/api.js"
+            strategy="afterInteractive"
+            async
+            defer
+          />
+          <div ref={tsRef} className="cf-turnstile" />
+        </>
+      )}
 
       {state.status === "error" && (
         <p

@@ -69,11 +69,16 @@ async function hmac(payload: string): Promise<string> {
 export type PortalClaims = {
   email: string;
   exp: number; // unix seconds
+  iat?: number; // unix seconds (issued at)
   kind: "magic" | "session";
 };
 
 export async function signToken(claims: PortalClaims): Promise<string> {
-  const payload = base64UrlEncode(JSON.stringify(claims));
+  const withIat: PortalClaims = {
+    iat: claims.iat ?? Math.floor(Date.now() / 1000),
+    ...claims,
+  };
+  const payload = base64UrlEncode(JSON.stringify(withIat));
   const sig = await hmac(payload);
   return `${payload}.${sig}`;
 }

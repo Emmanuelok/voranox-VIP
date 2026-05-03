@@ -5,6 +5,7 @@ import {
   getClientIpFromHeaders,
   isHoneypotTripped,
 } from "@/lib/rateLimit";
+import { logEvent } from "@/lib/events";
 
 export type SubscribeState =
   | { status: "idle" }
@@ -18,6 +19,7 @@ export async function subscribeToInsights(
   formData: FormData,
 ): Promise<SubscribeState> {
   if (isHoneypotTripped(formData)) {
+    logEvent("newsletter.honeypot");
     return {
       status: "success",
       message:
@@ -40,6 +42,7 @@ export async function subscribeToInsights(
     subject: ip,
   });
   if (!ipLimit.allowed) {
+    logEvent("newsletter.rate_limited", { resetAt: ipLimit.resetAt });
     return {
       status: "error",
       message: "Too many requests from this address. Please try again later.",
@@ -81,6 +84,7 @@ export async function subscribeToInsights(
     if (!res.ok && res.status !== 409) {
       const body = await res.text();
       console.error("[Voranox] Resend Audiences error:", res.status, body);
+      logEvent("newsletter.delivery_failed", { status: res.status });
       return {
         status: "error",
         message: "Subscription failed. Please try again or write to insights@voranox.com.",
@@ -88,12 +92,16 @@ export async function subscribeToInsights(
     }
   } catch (err) {
     console.error("[Voranox] Subscription transport error:", err);
+    logEvent("newsletter.delivery_failed", {
+      error: err instanceof Error ? err.message : String(err),
+    });
     return {
       status: "error",
       message: "Subscription failed. Please try again or write to insights@voranox.com.",
     };
   }
 
+  logEvent("newsletter.subscribe", { email, institution });
   return {
     status: "success",
     message:

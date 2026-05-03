@@ -7,6 +7,33 @@ import {
   getClientIpFromHeaders,
   isHoneypotTripped,
 } from "@/lib/rateLimit";
+import { logEvent } from "@/lib/events";
+
+async function verifyTurnstile(token: string, ip: string): Promise<boolean> {
+  const secret = process.env.TURNSTILE_SECRET_KEY;
+  if (!secret) return true; // Not configured — pass through.
+  if (!token) return false;
+  try {
+    const res = await fetch(
+      "https://challenges.cloudflare.com/turnstile/v0/siteverify",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams({
+          secret,
+          response: token,
+          remoteip: ip,
+        }),
+      },
+    );
+    if (!res.ok) return false;
+    const j = (await res.json()) as { success?: boolean };
+    return Boolean(j.success);
+  } catch (err) {
+    console.error("[Voranox] Turnstile verify error:", err);
+    return false;
+  }
+}
 
 export type LoginState =
   | { status: "idle" }
@@ -20,6 +47,7 @@ export async function requestMagicLink(
   formData: FormData,
 ): Promise<LoginState> {
   if (isHoneypotTripped(formData)) {
+    logEvent("login.honeypot");
     // Bots get an apparent success without an email actually being sent.
     const trapEmail = String(formData.get("email") ?? "").trim() || "you";
     return { status: "sent", email: trapEmail };
@@ -40,6 +68,7 @@ export async function requestMagicLink(
     subject: ip,
   });
   if (!ipLimit.allowed) {
+    logEvent("login.rate_limited", { kind: "ip", resetAt: ipLimit.resetAt });
     return {
       status: "error",
       message: "Too many sign-in requests from this address. Please try again in a few minutes.",
@@ -52,9 +81,21 @@ export async function requestMagicLink(
     subject: email,
   });
   if (!emailLimit.allowed) {
+    logEvent("login.rate_limited", { kind: "email", email });
     return {
       status: "error",
       message: "This email has reached the hourly sign-in limit. Please try again later.",
+    };
+  }
+
+  // Turnstile (Cloudflare CAPTCHA). Skipped silently if not configured.
+  const turnstileToken = String(formData.get("cf-turnstile-response") ?? "");
+  const turnstileOk = await verifyTurnstile(turnstileToken, ip);
+  if (!turnstileOk) {
+    logEvent("login.turnstile_failed", { email });
+    return {
+      status: "error",
+      message: "Verification failed. Please complete the challenge and try again.",
     };
   }
 
@@ -126,6 +167,7 @@ export async function requestMagicLink(
     if (!res.ok) {
       const body = await res.text();
       console.error("[Voranox] Magic-link delivery failed:", res.status, body);
+      logEvent("login.delivery_failed", { status: res.status, email });
       return {
         status: "error",
         message:
@@ -134,6 +176,10 @@ export async function requestMagicLink(
     }
   } catch (e) {
     console.error("[Voranox] Magic-link transport error:", e);
+    logEvent("login.delivery_failed", {
+      email,
+      error: e instanceof Error ? e.message : String(e),
+    });
     return {
       status: "error",
       message:
@@ -141,5 +187,6 @@ export async function requestMagicLink(
     };
   }
 
+  logEvent("login.request", { email });
   return { status: "sent", email };
 }

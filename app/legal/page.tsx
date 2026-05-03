@@ -181,6 +181,13 @@ export default function LegalPage() {
               disabled may use the public surfaces normally; only the Client
               Portal requires the session cookie.
             </p>
+            <p>
+              For the full inventory and our deliberate exclusions, see the{" "}
+              <Link href="/legal/cookies" className="text-gold hover:underline">
+                cookies notice
+              </Link>
+              .
+            </p>
           </Section>
 
           <Section id="terms" title="04 · Terms of Use">

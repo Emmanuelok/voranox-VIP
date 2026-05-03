@@ -5,6 +5,7 @@ import {
   getClientIpFromHeaders,
   isHoneypotTripped,
 } from "@/lib/rateLimit";
+import { logEvent } from "@/lib/events";
 
 export type InquiryState =
   | { status: "idle" }
@@ -20,6 +21,7 @@ export async function submitInquiry(
   // Silent honeypot: bots that fill hidden fields get a generic-looking
   // success response without delivery so they can't iterate against signal.
   if (isHoneypotTripped(formData)) {
+    logEvent("contact.honeypot");
     return {
       status: "success",
       message:
@@ -35,6 +37,7 @@ export async function submitInquiry(
     subject: ip,
   });
   if (!limit.allowed) {
+    logEvent("contact.rate_limited", { resetAt: limit.resetAt });
     return {
       status: "error",
       message:
@@ -119,6 +122,7 @@ export async function submitInquiry(
     if (!res.ok) {
       const body = await res.text();
       console.error("[Voranox] Resend error:", res.status, body);
+      logEvent("contact.delivery_failed", { status: res.status });
       return {
         status: "error",
         message:
@@ -127,6 +131,9 @@ export async function submitInquiry(
     }
   } catch (err) {
     console.error("[Voranox] Inquiry transport error:", err);
+    logEvent("contact.delivery_failed", {
+      error: err instanceof Error ? err.message : String(err),
+    });
     return {
       status: "error",
       message:
@@ -134,6 +141,11 @@ export async function submitInquiry(
     };
   }
 
+  logEvent("contact.submit", {
+    institution: data.institution,
+    domain: data.domain,
+    email: data.email,
+  });
   return {
     status: "success",
     message:

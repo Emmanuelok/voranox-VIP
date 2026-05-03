@@ -3,12 +3,23 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { cookies } from "next/headers";
 import { SESSION_COOKIE, verifyToken } from "@/lib/portalToken";
+import { logEvent } from "@/lib/events";
 
 export const metadata: Metadata = {
   title: "Client Portal",
   description: "The Voranox Inc. Client Portal.",
   robots: { index: false, follow: false },
 };
+
+const fmtUTC = (s: number) =>
+  new Date(s * 1000).toLocaleString("en-GB", {
+    timeZone: "UTC",
+    year: "numeric",
+    month: "short",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+  });
 
 export default async function PortalPage() {
   const store = await cookies();
@@ -19,14 +30,10 @@ export default async function PortalPage() {
     redirect("/portal/login");
   }
 
-  const expDate = new Date(session.exp * 1000).toLocaleString("en-GB", {
-    timeZone: "UTC",
-    year: "numeric",
-    month: "short",
-    day: "2-digit",
-    hour: "2-digit",
-    minute: "2-digit",
-  });
+  logEvent("portal.access", { email: session.email });
+
+  const expDate = fmtUTC(session.exp);
+  const signedInAt = session.iat ? fmtUTC(session.iat) : null;
 
   return (
     <>
@@ -43,6 +50,11 @@ export default async function PortalPage() {
                 <span className="gold-text">{session.email}.</span>
               </h1>
               <p className="mt-4 text-sm text-ivory/55">
+                {signedInAt && (
+                  <>
+                    Signed in {signedInAt} UTC ·{" "}
+                  </>
+                )}
                 Session valid through {expDate} UTC · 7-day rolling window
               </p>
             </div>
