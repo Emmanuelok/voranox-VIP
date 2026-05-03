@@ -21,6 +21,7 @@ export function ContactForm() {
       action={action}
       className="lg:col-span-3 border border-gold/15 bg-midnight-50/40 p-10 space-y-6"
     >
+      <Honeypot />
       <Field label="Full name" name="name" required error={fieldErrors.name} />
       <Field label="Title" name="title" />
       <Field
@@ -98,6 +99,30 @@ function SubmitButton() {
       {pending ? "Submitting…" : "Submit Inquiry"}
       {!pending && <span aria-hidden>→</span>}
     </button>
+  );
+}
+
+function Honeypot() {
+  return (
+    <div
+      aria-hidden="true"
+      style={{
+        position: "absolute",
+        left: "-9999px",
+        width: "1px",
+        height: "1px",
+        overflow: "hidden",
+      }}
+    >
+      <label htmlFor="hp-website">Website</label>
+      <input
+        id="hp-website"
+        name="website"
+        type="text"
+        tabIndex={-1}
+        autoComplete="off"
+      />
+    </div>
   );
 }
 

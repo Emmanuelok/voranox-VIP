@@ -1,5 +1,11 @@
 "use server";
 
+import {
+  checkLimit,
+  getClientIpFromHeaders,
+  isHoneypotTripped,
+} from "@/lib/rateLimit";
+
 export type SubscribeState =
   | { status: "idle" }
   | { status: "success"; message: string }
@@ -11,11 +17,33 @@ export async function subscribeToInsights(
   _prev: SubscribeState,
   formData: FormData,
 ): Promise<SubscribeState> {
+  if (isHoneypotTripped(formData)) {
+    return {
+      status: "success",
+      message:
+        "Subscribed. You will receive future Voranox Insights essays as they are published.",
+    };
+  }
+
   const email = String(formData.get("email") ?? "").trim();
   const institution = String(formData.get("institution") ?? "").trim();
 
   if (!email || !EMAIL_RE.test(email)) {
     return { status: "error", message: "Provide a valid email address." };
+  }
+
+  const ip = await getClientIpFromHeaders();
+  const ipLimit = checkLimit({
+    key: "newsletter:ip",
+    windowMs: 60 * 60 * 1000,
+    max: 5,
+    subject: ip,
+  });
+  if (!ipLimit.allowed) {
+    return {
+      status: "error",
+      message: "Too many requests from this address. Please try again later.",
+    };
   }
 
   const apiKey = process.env.RESEND_API_KEY;

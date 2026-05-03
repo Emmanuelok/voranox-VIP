@@ -30,6 +30,25 @@ export function InsightsSubscribe() {
       action={action}
       className="border border-gold/15 bg-midnight-50/40 p-8 max-w-2xl"
     >
+      <div
+        aria-hidden="true"
+        style={{
+          position: "absolute",
+          left: "-9999px",
+          width: "1px",
+          height: "1px",
+          overflow: "hidden",
+        }}
+      >
+        <label htmlFor="ns-hp-website">Website</label>
+        <input
+          id="ns-hp-website"
+          name="website"
+          type="text"
+          tabIndex={-1}
+          autoComplete="off"
+        />
+      </div>
       <p className="text-xs tracking-[0.4em] uppercase text-gold mb-3">
         Subscribe
       </p>

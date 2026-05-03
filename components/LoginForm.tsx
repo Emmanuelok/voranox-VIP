@@ -46,6 +46,25 @@ export function LoginForm() {
       action={action}
       className="border border-gold/15 bg-midnight-50/40 p-10 space-y-5"
     >
+      <div
+        aria-hidden="true"
+        style={{
+          position: "absolute",
+          left: "-9999px",
+          width: "1px",
+          height: "1px",
+          overflow: "hidden",
+        }}
+      >
+        <label htmlFor="lp-hp-website">Website</label>
+        <input
+          id="lp-hp-website"
+          name="website"
+          type="text"
+          tabIndex={-1}
+          autoComplete="off"
+        />
+      </div>
       <div>
         <label className="text-xs tracking-[0.3em] uppercase text-gold mb-3 block">
           Institutional email

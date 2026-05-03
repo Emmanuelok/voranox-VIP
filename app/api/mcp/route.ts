@@ -14,6 +14,7 @@
 import { sectors, type Sector } from "@/lib/sectors";
 import { essays, type Essay } from "@/lib/insights";
 import { releases, type Release } from "@/lib/releases";
+import { checkLimit, getClientIpFromRequest } from "@/lib/rateLimit";
 
 const SITE = "https://voranox.com";
 const PROTOCOL = "2025-06-18";
@@ -436,6 +437,28 @@ function dispatch(req: RpcRequest): RpcOk | RpcErr | null {
 // ----- HTTP HANDLERS -------------------------------------------------------
 
 export async function POST(request: Request) {
+  // Generous limit suited to AI-agent traffic; protects against runaway
+  // loops without throttling legitimate research use.
+  const ip = getClientIpFromRequest(request);
+  const limit = checkLimit({
+    key: "mcp",
+    windowMs: 60 * 1000,
+    max: 60,
+    subject: ip,
+  });
+  if (!limit.allowed) {
+    return Response.json(err(null, -32099, "Rate limit exceeded"), {
+      status: 429,
+      headers: {
+        ...corsHeaders(),
+        "Retry-After": Math.max(
+          1,
+          Math.ceil((limit.resetAt - Date.now()) / 1000),
+        ).toString(),
+      },
+    });
+  }
+
   let body: unknown;
   try {
     body = await request.json();

@@ -11,6 +11,8 @@ export function GET() {
         platforms: `${SITE}/api/platforms`,
         insights: `${SITE}/api/insights`,
         releases: `${SITE}/api/releases`,
+        mcp: `${SITE}/api/mcp`,
+        health: `${SITE}/api/health`,
       },
       feeds: {
         rss: `${SITE}/insights/feed.xml`,

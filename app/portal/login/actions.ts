@@ -2,6 +2,11 @@
 
 import { headers } from "next/headers";
 import { MAGIC_TTL_SECONDS, signToken } from "@/lib/portalToken";
+import {
+  checkLimit,
+  getClientIpFromHeaders,
+  isHoneypotTripped,
+} from "@/lib/rateLimit";
 
 export type LoginState =
   | { status: "idle" }
@@ -14,9 +19,43 @@ export async function requestMagicLink(
   _prev: LoginState,
   formData: FormData,
 ): Promise<LoginState> {
+  if (isHoneypotTripped(formData)) {
+    // Bots get an apparent success without an email actually being sent.
+    const trapEmail = String(formData.get("email") ?? "").trim() || "you";
+    return { status: "sent", email: trapEmail };
+  }
+
   const email = String(formData.get("email") ?? "").trim().toLowerCase();
   if (!email || !EMAIL_RE.test(email)) {
     return { status: "error", message: "Provide a valid email address." };
+  }
+
+  // Two-track rate limit: per-IP (DoS protection) and per-email
+  // (enumeration / abuse protection on the Resend integration).
+  const ip = await getClientIpFromHeaders();
+  const ipLimit = checkLimit({
+    key: "login:ip",
+    windowMs: 15 * 60 * 1000,
+    max: 5,
+    subject: ip,
+  });
+  if (!ipLimit.allowed) {
+    return {
+      status: "error",
+      message: "Too many sign-in requests from this address. Please try again in a few minutes.",
+    };
+  }
+  const emailLimit = checkLimit({
+    key: "login:email",
+    windowMs: 60 * 60 * 1000,
+    max: 5,
+    subject: email,
+  });
+  if (!emailLimit.allowed) {
+    return {
+      status: "error",
+      message: "This email has reached the hourly sign-in limit. Please try again later.",
+    };
   }
 
   const exp = Math.floor(Date.now() / 1000) + MAGIC_TTL_SECONDS;

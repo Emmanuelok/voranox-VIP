@@ -1,5 +1,11 @@
 "use server";
 
+import {
+  checkLimit,
+  getClientIpFromHeaders,
+  isHoneypotTripped,
+} from "@/lib/rateLimit";
+
 export type InquiryState =
   | { status: "idle" }
   | { status: "success"; message: string }
@@ -11,6 +17,31 @@ export async function submitInquiry(
   _prev: InquiryState,
   formData: FormData
 ): Promise<InquiryState> {
+  // Silent honeypot: bots that fill hidden fields get a generic-looking
+  // success response without delivery so they can't iterate against signal.
+  if (isHoneypotTripped(formData)) {
+    return {
+      status: "success",
+      message:
+        "Inquiry received. A senior partner will respond within two business days.",
+    };
+  }
+
+  const ip = await getClientIpFromHeaders();
+  const limit = checkLimit({
+    key: "contact",
+    windowMs: 60 * 60 * 1000, // 1 hour
+    max: 5,
+    subject: ip,
+  });
+  if (!limit.allowed) {
+    return {
+      status: "error",
+      message:
+        "Too many submissions from this address. Please try again later or write to briefings@voranox.com directly.",
+    };
+  }
+
   const data = {
     name: String(formData.get("name") ?? "").trim(),
     title: String(formData.get("title") ?? "").trim(),
