@@ -6,8 +6,6 @@
 // exceed the configured rate. The clean upgrade path is Vercel KV /
 // Upstash; until then, this is a meaningful first line of defence.
 
-import { headers } from "next/headers";
-
 type Bucket = number[]; // timestamps in ms
 
 const buckets = new Map<string, Bucket>();
@@ -66,6 +64,8 @@ export function checkLimit(opts: RateLimitOpts): RateLimitResult {
 
 /** Read the originating IP from forwarding headers; falls back to a stable token. */
 export async function getClientIpFromHeaders(): Promise<string> {
+  // Lazy import so this module remains usable in non-Next contexts (tests).
+  const { headers } = await import("next/headers");
   const h = await headers();
   const xff = h.get("x-forwarded-for") ?? "";
   const first = xff.split(",")[0].trim();

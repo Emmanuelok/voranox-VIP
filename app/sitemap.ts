@@ -23,6 +23,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/engagement",
     "/legal",
     "/legal/cookies",
+    "/status",
     "/portal/login",
     "/sterling",
     "/vitae",

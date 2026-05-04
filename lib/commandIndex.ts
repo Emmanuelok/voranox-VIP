@@ -22,6 +22,7 @@ const PAGES: Item[] = (
     { kind: "Page", title: "Brand · Standards & Assets", href: "/brand" },
     { kind: "Page", title: "Engagement · How We Work", href: "/engagement" },
     { kind: "Page", title: "Legal · Notices & Standards", href: "/legal" },
+    { kind: "Page", title: "Status · Operational Health", href: "/status" },
     { kind: "Page", title: "Client Portal · Sign in", href: "/portal/login" },
     { kind: "Page", title: "Careers", href: "/careers" },
     { kind: "Page", title: "Engage · Contact", href: "/contact" },
