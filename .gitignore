@@ -12,3 +12,5 @@ build
 next-env.d.ts
 .turbo
 coverage
+tsconfig.tsbuildinfo
+*.tsbuildinfo
