@@ -19,7 +19,6 @@ const PAGES: Item[] = (
     { kind: "Page", title: "Trust & Standards", href: "/trust" },
     { kind: "Page", title: "Insights", href: "/insights" },
     { kind: "Page", title: "Press", href: "/press" },
-    { kind: "Page", title: "Brand · Standards & Assets", href: "/brand" },
     { kind: "Page", title: "Engagement · How We Work", href: "/engagement" },
     { kind: "Page", title: "Legal · Notices & Standards", href: "/legal" },
     { kind: "Page", title: "Status · Operational Health", href: "/status" },

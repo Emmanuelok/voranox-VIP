@@ -32,12 +32,6 @@ const kit = [
     download: true,
   },
   {
-    label: "Brand Standards",
-    note: "Color, typography, and usage — full guide",
-    href: "/brand",
-    download: false,
-  },
-  {
     label: "Fact Sheet · On request",
     note: "One-page signed overview for press desks",
     href: "mailto:press@voranox.com",

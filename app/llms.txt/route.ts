@@ -72,7 +72,6 @@ ${press}
 - [Trust & Standards](${SITE}/trust)
 - [Engagement · How We Work](${SITE}/engagement)
 - [Legal](${SITE}/legal)
-- [Brand · Standards & Assets](${SITE}/brand)
 - [Press · Press Kit](${SITE}/press)
 - [Careers](${SITE}/careers)
 - [Engage · Contact](${SITE}/contact)

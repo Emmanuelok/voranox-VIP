@@ -16,7 +16,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/trust",
     "/insights",
     "/press",
-    "/brand",
     "/careers",
     "/contact",
     "/announce",

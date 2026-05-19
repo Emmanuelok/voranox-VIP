@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: "Brand · Standards & Assets",
   description:
     "The Voranox Inc. brand standards — wordmark, monogram, color, typography, and usage. Assets available for download.",
+  robots: { index: false, follow: false },
 };
 
 const colors = [
