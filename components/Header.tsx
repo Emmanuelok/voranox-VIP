@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Logo } from "./Logo";
 import { CommandPalette } from "./CommandPalette";
 import { ThemeToggle } from "./ThemeToggle";
+import { MobileNav } from "./MobileNav";
 import { commandIndex } from "@/lib/commandIndex";
 
 const nav = [
@@ -39,12 +40,7 @@ export function Header() {
             Request Briefing
             <span aria-hidden>→</span>
           </Link>
-          <Link
-            href="/platforms"
-            className="lg:hidden text-sm tracking-[0.2em] uppercase text-gold"
-          >
-            Menu
-          </Link>
+          <MobileNav items={nav} />
         </div>
       </div>
     </header>

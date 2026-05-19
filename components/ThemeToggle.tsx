@@ -22,9 +22,14 @@ function apply(resolved: "light" | "dark") {
   el.style.colorScheme = resolved;
 }
 
-export function ThemeToggle() {
+export function ThemeToggle({
+  alwaysVisible = false,
+}: {
+  alwaysVisible?: boolean;
+}) {
   const [theme, setThemeState] = useState<Theme>("dark");
   const [mounted, setMounted] = useState(false);
+  const visibility = alwaysVisible ? "inline-flex" : "hidden md:inline-flex";
 
   useEffect(() => {
     setMounted(true);
@@ -50,7 +55,7 @@ export function ThemeToggle() {
   if (!mounted) {
     return (
       <div
-        className="hidden md:inline-flex items-center gap-px border border-gold/15 h-8"
+        className={`${visibility} items-center gap-px border border-gold/15 h-8`}
         aria-hidden
       >
         <span className="w-8 h-8" />
@@ -70,7 +75,7 @@ export function ThemeToggle() {
     <div
       role="radiogroup"
       aria-label="Theme"
-      className="hidden md:inline-flex items-center border border-gold/15"
+      className={`${visibility} items-center border border-gold/15`}
     >
       {opts.map((o) => {
         const active = theme === o.value;

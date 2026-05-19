@@ -143,3 +143,54 @@ body {
     transform: translateY(0);
   }
 }
+
+/* Accessible focus ring — visible only on keyboard focus, never on mouse. */
+*:focus-visible {
+  outline: 2px solid rgb(var(--c-gold));
+  outline-offset: 2px;
+  border-radius: 1px;
+}
+
+/* Skip-to-content link — invisible until focused, then a real target. */
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+  z-index: 200;
+  padding: 0.75rem 1.25rem;
+  background: rgb(var(--c-gold));
+  color: rgb(var(--c-midnight));
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  font-weight: 600;
+  transform: translateY(-200%);
+  transition: transform 0.15s ease;
+}
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+/* Honor OS-level reduced-motion preference. */
+@media (prefers-reduced-motion: reduce) {
+  .shimmer {
+    animation: none !important;
+  }
+  .fade-up {
+    animation: none !important;
+    opacity: 1;
+    transform: none;
+  }
+  html,
+  body {
+    transition: none !important;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
