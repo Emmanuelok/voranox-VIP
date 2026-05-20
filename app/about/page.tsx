@@ -67,6 +67,13 @@ export default function AboutPage() {
             <p className="font-serif text-2xl gold-text">
               Intelligence, refined. Quietly. Permanently.
             </p>
+            <p className="text-sm text-ivory/60">
+              The firm&rsquo;s eight commitments are recorded in full on{" "}
+              <Link href="/doctrine" className="text-gold hover:underline">
+                the Doctrine page
+              </Link>
+              .
+            </p>
           </div>
         </div>
       </section>

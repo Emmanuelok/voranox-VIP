@@ -68,7 +68,10 @@ ${press}
 ## Operating Surfaces
 
 - [The Firm · About](${SITE}/about)
+- [The Voranox Doctrine](${SITE}/doctrine)
 - [Practices](${SITE}/practices)
+- [Architecture](${SITE}/architecture)
+- [Illustrative Engagements](${SITE}/case-studies)
 - [Trust & Standards](${SITE}/trust)
 - [Engagement · How We Work](${SITE}/engagement)
 - [Legal](${SITE}/legal)

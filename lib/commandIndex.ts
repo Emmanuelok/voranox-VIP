@@ -1,6 +1,7 @@
 import { sectors } from "./sectors";
 import { essays } from "./insights";
 import { releases } from "./releases";
+import { caseStudies } from "./caseStudies";
 
 type Item = {
   kind: "Platform" | "Essay" | "Release" | "Page" | "Preview" | "API";
@@ -14,8 +15,11 @@ const PAGES: Item[] = (
   [
     { kind: "Page", title: "Home", href: "/" },
     { kind: "Page", title: "The Firm · About", href: "/about" },
+    { kind: "Page", title: "The Voranox Doctrine", href: "/doctrine" },
     { kind: "Page", title: "Platforms · Directory", href: "/platforms" },
     { kind: "Page", title: "Practices", href: "/practices" },
+    { kind: "Page", title: "Architecture", href: "/architecture" },
+    { kind: "Page", title: "Illustrative Engagements", href: "/case-studies" },
     { kind: "Page", title: "Trust & Standards", href: "/trust" },
     { kind: "Page", title: "Insights", href: "/insights" },
     { kind: "Page", title: "Press", href: "/press" },
@@ -95,11 +99,20 @@ const RELEASES: Item[] = releases.map((r) => ({
   haystack: `${r.headline} ${r.summary} ${r.dateline}`,
 }));
 
+const CASE_STUDIES: Item[] = caseStudies.map((c) => ({
+  kind: "Essay",
+  title: `${c.platform} · ${c.industry}`,
+  subtitle: c.headline,
+  href: `/case-studies/${c.slug}`,
+  haystack: `${c.platform} ${c.industry} ${c.headline} ${c.client} ${c.region}`,
+}));
+
 export const commandIndex: Item[] = [
   ...PAGES,
   ...PREVIEWS,
   ...PLATFORMS,
   ...ESSAYS,
+  ...CASE_STUDIES,
   ...RELEASES,
   ...APIS,
 ];
