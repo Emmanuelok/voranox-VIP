@@ -1,10 +1,12 @@
 import Link from "next/link";
 import type { LocaleCopy } from "@/lib/locales";
+import { DocumentLang } from "./DocumentLang";
 
 export function LocalizedHome({ locale }: { locale: LocaleCopy }) {
   const isRTL = locale.dir === "rtl";
   return (
     <div lang={locale.code} dir={locale.dir}>
+      <DocumentLang lang={locale.code} dir={locale.dir} />
       <section className="relative noise border-b border-gold/15">
         <div className="absolute inset-0 bg-midnight-glow pointer-events-none" />
         <div className="relative max-w-6xl mx-auto px-6 lg:px-10 py-28 lg:py-44">
