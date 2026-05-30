@@ -1,25 +1,39 @@
 // Portal magic-link token helpers.
 //
 // Uses Web Crypto HMAC-SHA-256 (works in Edge and Node). Token format:
-//   base64url(JSON({email, exp, kind})).base64url(HMAC(payload))
+//   base64url(JSON({email, exp, iat, kind})).base64url(HMAC(payload))
 //
-// `PORTAL_SECRET` should be set to a long random string in production.
-// Without it the module logs a loud warning and uses a fixed default so
-// the portal works in dev — those tokens are clearly not production-safe.
+// Security posture:
+//  - In production, PORTAL_SECRET MUST be set. If it is missing the module
+//    fails closed — signing throws and verification denies — rather than
+//    silently using a known default that would make every token forgeable.
+//  - In development only, a fixed default secret is used so the portal works
+//    locally without configuration.
+//  - Signature comparison is constant-time to avoid a timing side-channel.
 
-const DEFAULT_SECRET = "voranox-portal-dev-secret-do-not-use-in-production";
+const DEFAULT_DEV_SECRET = "voranox-portal-dev-secret-do-not-use-in-production";
 
-function getSecret(): string {
+/** Returns the signing secret, or null when production is misconfigured. */
+function getSecret(): string | null {
   const s = process.env.PORTAL_SECRET;
-  if (!s) {
-    if (process.env.NODE_ENV === "production") {
-      console.warn(
-        "[Voranox] PORTAL_SECRET not set in production — using default. Tokens are not secure.",
-      );
-    }
-    return DEFAULT_SECRET;
+  if (s) return s;
+  if (process.env.NODE_ENV === "production") {
+    console.error(
+      "[Voranox] PORTAL_SECRET is not set in production. Portal tokens are disabled (fail-closed).",
+    );
+    return null;
   }
-  return s;
+  return DEFAULT_DEV_SECRET;
+}
+
+/** Constant-time string comparison for fixed-length signatures. */
+function timingSafeEqual(a: string, b: string): boolean {
+  if (a.length !== b.length) return false;
+  let mismatch = 0;
+  for (let i = 0; i < a.length; i++) {
+    mismatch |= a.charCodeAt(i) ^ b.charCodeAt(i);
+  }
+  return mismatch === 0;
 }
 
 function base64UrlEncode(input: ArrayBuffer | string): string {
@@ -50,10 +64,10 @@ function base64UrlDecode(s: string): Uint8Array {
   return out;
 }
 
-async function hmac(payload: string): Promise<string> {
+async function hmac(payload: string, secret: string): Promise<string> {
   const key = await crypto.subtle.importKey(
     "raw",
-    new TextEncoder().encode(getSecret()),
+    new TextEncoder().encode(secret),
     { name: "HMAC", hash: "SHA-256" },
     false,
     ["sign"],
@@ -74,21 +88,29 @@ export type PortalClaims = {
 };
 
 export async function signToken(claims: PortalClaims): Promise<string> {
-  const withIat: PortalClaims = {
-    iat: claims.iat ?? Math.floor(Date.now() / 1000),
+  const secret = getSecret();
+  if (!secret) {
+    throw new Error("PORTAL_SECRET is not configured; refusing to sign token.");
+  }
+  // Spread first, then force iat to a concrete number so an explicit
+  // `iat: undefined` from a caller can never clobber the default.
+  const payloadObj: PortalClaims = {
     ...claims,
+    iat: claims.iat ?? Math.floor(Date.now() / 1000),
   };
-  const payload = base64UrlEncode(JSON.stringify(withIat));
-  const sig = await hmac(payload);
+  const payload = base64UrlEncode(JSON.stringify(payloadObj));
+  const sig = await hmac(payload, secret);
   return `${payload}.${sig}`;
 }
 
 export async function verifyToken(token: string): Promise<PortalClaims | null> {
+  const secret = getSecret();
+  if (!secret) return null; // fail closed in misconfigured production
   const parts = token.split(".");
   if (parts.length !== 2) return null;
   const [payload, sig] = parts;
-  const expected = await hmac(payload);
-  if (sig !== expected) return null;
+  const expected = await hmac(payload, secret);
+  if (!timingSafeEqual(sig, expected)) return null;
   let claims: PortalClaims;
   try {
     claims = JSON.parse(new TextDecoder().decode(base64UrlDecode(payload)));

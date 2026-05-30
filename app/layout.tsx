@@ -5,6 +5,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { SITE_URL } from "@/lib/site";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -26,7 +27,7 @@ export const metadata: Metadata = {
   },
   description:
     "Voranox Inc. is the parent company building Voranox intelligent platforms across every industry, sector, and institution worldwide.",
-  metadataBase: new URL("https://voranox.com"),
+  metadataBase: new URL(SITE_URL),
   openGraph: {
     title: "Voranox Inc. — Intelligence for Every Industry",
     description:

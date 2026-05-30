@@ -7,9 +7,11 @@ export const metadata: Metadata = {
     "Live operational status of Voranox Inc. public surfaces and dependencies.",
 };
 
-// Revalidate the page on a 60s cadence — fresh for monitoring without
-// hammering upstreams from every visitor.
-export const revalidate = 60;
+// Render at request time. The page self-probes its own origin and an
+// upstream dependency; baking a snapshot at build time (when no server is
+// listening) would otherwise cache a false "outage". Probes are parallel
+// with a 4s timeout, so response stays fast.
+export const dynamic = "force-dynamic";
 
 type Check = {
   name: string;

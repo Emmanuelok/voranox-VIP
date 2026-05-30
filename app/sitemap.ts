@@ -4,7 +4,7 @@ import { essays } from "@/lib/insights";
 import { releases } from "@/lib/releases";
 import { caseStudies } from "@/lib/caseStudies";
 
-const SITE = "https://voranox.com";
+import { SITE_URL as SITE } from "@/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();

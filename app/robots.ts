@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { SITE_URL } from "@/lib/site";
 
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -6,9 +7,11 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
+        // Gated and machine-only surfaces add no value to a search index.
+        disallow: ["/api/", "/portal"],
       },
     ],
-    sitemap: "https://voranox.com/sitemap.xml",
-    host: "https://voranox.com",
+    sitemap: `${SITE_URL}/sitemap.xml`,
+    host: SITE_URL,
   };
 }

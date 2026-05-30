@@ -96,4 +96,47 @@ describe("portalToken", () => {
     assert.ok(SESSION_TTL_SECONDS >= 24 * 60 * 60);
     assert.equal(SESSION_COOKIE, "voranox_portal");
   });
+
+  it("ignores an explicit iat: undefined and still issues a number", async () => {
+    const exp = Math.floor(Date.now() / 1000) + 3600;
+    const token = await signToken({
+      email: "iat@example.com",
+      exp,
+      iat: undefined,
+      kind: "session",
+    });
+    const claims = await verifyToken(token);
+    assert.ok(claims);
+    assert.equal(typeof claims!.iat, "number");
+  });
+
+  it("fails closed in production when PORTAL_SECRET is unset", async () => {
+    const env = process.env as Record<string, string | undefined>;
+    const savedSecret = env.PORTAL_SECRET;
+    const savedEnv = env.NODE_ENV;
+    try {
+      // First mint a valid token while the secret is present.
+      const exp = Math.floor(Date.now() / 1000) + 3600;
+      const token = await signToken({
+        email: "prod@example.com",
+        exp,
+        kind: "session",
+      });
+
+      // Now simulate a misconfigured production deploy.
+      delete env.PORTAL_SECRET;
+      env.NODE_ENV = "production";
+
+      // Signing must refuse rather than use a known default.
+      await assert.rejects(
+        () => signToken({ email: "x@example.com", exp, kind: "session" }),
+        /PORTAL_SECRET/,
+      );
+      // Verification must deny rather than accept a default-signed token.
+      assert.equal(await verifyToken(token), null);
+    } finally {
+      env.NODE_ENV = savedEnv;
+      if (savedSecret !== undefined) env.PORTAL_SECRET = savedSecret;
+    }
+  });
 });

@@ -29,6 +29,9 @@ export function MobileNav({ items }: { items: NavItem[] }) {
   // Body scroll lock + Escape to close + focus management.
   useEffect(() => {
     if (!open) return;
+    // Capture the trigger node now so cleanup restores focus to the same
+    // element even if the ref changes by the time cleanup runs.
+    const trigger = buttonRef.current;
     const prev = document.body.style.overflow;
     document.body.style.overflow = "hidden";
 
@@ -49,7 +52,7 @@ export function MobileNav({ items }: { items: NavItem[] }) {
       document.body.style.overflow = prev;
       window.removeEventListener("keydown", onKey);
       // Return focus to the trigger.
-      buttonRef.current?.focus();
+      trigger?.focus();
     };
   }, [open]);
 
@@ -152,13 +155,13 @@ export function MobileNav({ items }: { items: NavItem[] }) {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/status" className="text-ivory/75 hover:text-gold">
-                    Status
+                  <Link href="/case-studies" className="text-ivory/75 hover:text-gold">
+                    Engagements
                   </Link>
                 </li>
                 <li>
-                  <Link href="/brand" className="text-ivory/75 hover:text-gold">
-                    Brand
+                  <Link href="/status" className="text-ivory/75 hover:text-gold">
+                    Status
                   </Link>
                 </li>
                 <li>
