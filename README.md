@@ -135,7 +135,7 @@ The site exposes several non-page surfaces useful for press, partners, and AI ag
 | Surface | URL | Purpose |
 | --- | --- | --- |
 | API index | `/api` | Discovery endpoint listing all public APIs |
-| Platforms API | `/api/platforms` | JSON of all 46 platforms |
+| Platforms API | `/api/platforms` | JSON of all 48 platforms |
 | Insights API | `/api/insights` | JSON list of essays |
 | Releases API | `/api/releases` | JSON list of press releases |
 | Insights RSS | `/insights/feed.xml` | RSS 2.0 feed of all essays |

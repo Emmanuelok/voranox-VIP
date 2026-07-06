@@ -12,8 +12,8 @@ const factSheet = [
   { label: "Legal name", value: "Voranox Incorporated" },
   { label: "Founded", value: "2025" },
   { label: "Headquarters", value: "New York · London · Hong Kong" },
-  { label: "Sectors served", value: "46 industry platforms" },
-  { label: "Domains", value: "Public Sector · Financial · Industry · Life Sciences · Society · Infrastructure · Knowledge · Commerce" },
+  { label: "Sectors served", value: "48 industry platforms" },
+  { label: "Domains", value: "Public Sector · Financial · Industry · Life Sciences · Society · Infrastructure · Knowledge · Legal · Commerce" },
   { label: "Tagline", value: "Intelligence, refined." },
 ];
 

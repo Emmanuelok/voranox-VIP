@@ -35,6 +35,7 @@ export type Sector = {
     | "Society"
     | "Infrastructure"
     | "Knowledge"
+    | "Legal"
     | "Commerce";
   tagline: string;
   description: string;
@@ -2466,7 +2467,7 @@ export const sectors: Sector[] = [
     slug: "legal",
     name: "Legal & Professional Services",
     platform: "Voranox Counsel",
-    category: "Knowledge",
+    category: "Legal",
     tagline: "The intelligent practice.",
     description:
       "Matter, contract, and knowledge intelligence for law firms, in-house counsel, and consulting firms.",
@@ -2537,6 +2538,162 @@ export const sectors: Sector[] = [
         "The lawyer's judgment is the product.",
         "Confidentiality is the floor, not a feature.",
         "Citations and provenance are non-negotiable.",
+      ],
+    },
+  },
+  {
+    slug: "regulatory-compliance",
+    name: "Regulatory Affairs & Compliance",
+    platform: "Voranox Statute",
+    category: "Legal",
+    tagline: "Compliance, engineered to the letter and the spirit.",
+    description:
+      "Regulatory intelligence, obligations management, and compliance operations for global corporates and the authorities that regulate them.",
+    capabilities: [
+      "Regulatory horizon scanning",
+      "Obligations mapping",
+      "Compliance operations AI",
+      "Regulatory reporting",
+    ],
+    href: "https://statute.voranox.com",
+    deep: {
+      longTagline:
+        "Statute is the regulatory intelligence platform for the institutions that must keep pace with the law as it is written, interpreted, and enforced.",
+      manifesto:
+        "Regulation is the grammar of legitimate commerce — and it now changes faster than any compliance function can read. Tens of thousands of regulatory updates issue every year across the jurisdictions a global institution operates in, and the cost of missing one is measured in consent orders, license risk, and public trust. Voranox Statute exists to read the law at the rate it is produced, map it to the obligations an institution actually carries, and turn compliance from a periodic scramble into a continuous, auditable operation.",
+      pillars: [
+        {
+          name: "Regulatory Horizon",
+          body: "Continuous monitoring of statutes, rules, guidance, and enforcement actions across jurisdictions — with materiality triage so the compliance function reads what matters.",
+        },
+        {
+          name: "Obligations Mapping",
+          body: "A living map from each regulatory provision to the policies, controls, and owners inside the institution that discharge it — with gaps surfaced, not buried.",
+        },
+        {
+          name: "Compliance Operations",
+          body: "Attestation, control-testing, and issue-management intelligence engineered for the cadence of a real compliance function.",
+        },
+        {
+          name: "Regulatory Reporting",
+          body: "Report production and filing intelligence — every figure traceable to source data and the provision that requires it.",
+        },
+      ],
+      useCases: [
+        {
+          title: "Horizon scanning with materiality triage",
+          body: "Continuous scanning of regulatory publications across jurisdictions, triaged by materiality to the institution's actual footprint — so a change in one market reaches the right owner within hours, not quarters.",
+        },
+        {
+          title: "Living obligations register",
+          body: "A continuously reconciled register mapping every applicable provision to the control that discharges it — with drift, gaps, and orphaned controls surfaced to the CCO.",
+        },
+        {
+          title: "Regulatory change impact assessment",
+          body: "When a rule changes, Statute traces the change through the obligations map to the affected policies, controls, systems, and training — producing the impact assessment a regulator expects to see.",
+        },
+        {
+          title: "Examination readiness",
+          body: "Continuous assembly of the evidentiary record an examiner will ask for — so the institution walks into supervision prepared rather than reconstructing history under deadline.",
+        },
+      ],
+      clients: [
+        "Chief Compliance Officers",
+        "Global Banks & Insurers",
+        "Pharmaceutical & Med-Device Compliance",
+        "Energy & Industrial Operators",
+        "Regulators & Supervisory Authorities",
+        "RegTech & Assurance Partners",
+      ],
+      metrics: [
+        { value: "Multi-jurisdiction", label: "Every operating footprint" },
+        { value: "Provision-level", label: "Obligations mapped to controls" },
+        { value: "Continuous", label: "Not periodic — always current" },
+        { value: "Examiner-ready", label: "Evidence assembled as you go" },
+      ],
+      doctrine: [
+        "The letter of the law and the spirit of the law are both binding.",
+        "An obligation without an owner is a finding waiting to happen.",
+        "Every compliance assertion must trace to evidence.",
+        "The regulator is a counterpart, not an adversary.",
+      ],
+    },
+  },
+  {
+    slug: "disputes",
+    name: "Arbitration & Dispute Resolution",
+    platform: "Voranox Accord",
+    category: "Legal",
+    tagline: "Resolution, at the standard of the tribunal.",
+    description:
+      "Case, evidence, and settlement intelligence for arbitral institutions, chambers, and the parties appearing before them.",
+    capabilities: [
+      "Case intelligence",
+      "Evidence & disclosure AI",
+      "Settlement analytics",
+      "Tribunal operations",
+    ],
+    href: "https://accord.voranox.com",
+    deep: {
+      longTagline:
+        "Accord is the dispute-resolution intelligence platform for arbitral institutions, international tribunals, and the counsel who appear before them.",
+      manifesto:
+        "Dispute resolution is where commercial relationships are tested against the record. A single international arbitration can carry a million documents, a decade of correspondence, and outcomes measured in the billions — decided by tribunals working under confidentiality and time pressure. Voranox Accord exists to master that record: the evidence, the authorities, the procedural history, and the economics of settlement — engineered to the neutrality and confidentiality the forum demands, in service of the parties, their counsel, and the institutions that administer justice between them.",
+      pillars: [
+        {
+          name: "Case Intelligence",
+          body: "The full procedural and factual record of a matter — pleadings, orders, correspondence, exhibits — as a queryable, cited whole.",
+        },
+        {
+          name: "Evidence & Disclosure",
+          body: "Document review, privilege screening, and disclosure intelligence at arbitration scale — with the defensibility production demands.",
+        },
+        {
+          name: "Settlement Analytics",
+          body: "Quantum modeling, outcome ranges, and settlement-posture intelligence — engineered for the party weighing resolution against award risk.",
+        },
+        {
+          name: "Tribunal Operations",
+          body: "Docket, deliberation-support, and drafting intelligence for arbitral institutions and tribunals — with strict party-confidentiality separation.",
+        },
+      ],
+      useCases: [
+        {
+          title: "Arbitration-scale document mastery",
+          body: "A million-document record made queryable and citable — every factual assertion in a memorial traceable to the exhibit that supports it.",
+        },
+        {
+          title: "Privilege and disclosure at speed",
+          body: "Review, privilege screening, and production intelligence that compresses disclosure from months to weeks without sacrificing defensibility.",
+        },
+        {
+          title: "Quantum and settlement posture",
+          body: "Damages modeling and outcome-range analytics that give the client a grounded view of award risk before the next settlement conversation.",
+        },
+        {
+          title: "Institutional case administration",
+          body: "Docket, appointment, and case-management intelligence for arbitral institutions administering hundreds of concurrent matters under confidentiality.",
+        },
+      ],
+      clients: [
+        "Arbitral Institutions",
+        "International Arbitration Practices",
+        "Corporate Disputes Counsel",
+        "Investor-State Tribunals",
+        "Mediation & ADR Bodies",
+        "Litigation Funders",
+      ],
+      metrics: [
+        { value: "Confidential", label: "By the standard of the forum" },
+        { value: "Million-document", label: "Records mastered, cited" },
+        { value: "Party-separated", label: "Structural confidentiality walls" },
+        { value: "Neutral", label: "Engineered for the tribunal's duty" },
+      ],
+      doctrine: [
+        "The record decides. We serve the record.",
+        "Confidentiality between parties is structural, not procedural.",
+        "The tribunal's neutrality is inviolable — the platform inherits it.",
+        "Settlement is a decision for the parties; our job is that it be an informed one.",
       ],
     },
   },

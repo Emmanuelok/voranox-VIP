@@ -53,7 +53,7 @@ The Voranox doctrine:
 
 ## Platforms
 
-The full directory of 46 industry-native intelligent platforms, organized across eight domains (Public Sector, Financial, Industry, Life Sciences, Society, Infrastructure, Knowledge, Commerce). Each platform has a dedicated page with manifesto, pillars, use cases, doctrine, clients, and metrics.
+The full directory of ${sectors.length} industry-native intelligent platforms, organized across nine domains (Public Sector, Financial, Industry, Life Sciences, Society, Infrastructure, Knowledge, Legal, Commerce). Each platform has a dedicated page with manifesto, pillars, use cases, doctrine, clients, and metrics.
 
 ${platforms}
 

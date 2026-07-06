@@ -11,6 +11,28 @@ export type Release = {
 
 export const releases: Release[] = [
   {
+    slug: "voranox-establishes-legal-domain",
+    date: "Second Release",
+    dateline: "NEW YORK · LONDON · HONG KONG",
+    headline:
+      "Voranox Inc. Establishes Legal as the Firm's Ninth Domain, Elevating Voranox Counsel and Introducing Voranox Statute and Voranox Accord",
+    summary:
+      "Voranox Inc. today established Legal as the firm's ninth domain, elevating Voranox Counsel to anchor it and introducing two new platforms: Voranox Statute for regulatory affairs and compliance, and Voranox Accord for arbitration and dispute resolution.",
+    body: [
+      "Voranox Inc. today established Legal as the firm's ninth domain, bringing the platform directory to forty-eight industry-native intelligent platforms across nine domains of human enterprise.",
+      "The Legal domain is anchored by Voranox Counsel, the firm's platform for law firms, in-house counsel, and professional-services practices, which moves from the Knowledge domain to lead the new grouping. It is joined by two newly introduced platforms.",
+      "Voranox Statute serves regulatory affairs and compliance — continuous regulatory horizon scanning, provision-level obligations mapping, compliance operations, and examiner-ready reporting for the global corporates and supervisory authorities that must keep pace with the law as it is written, interpreted, and enforced.",
+      "Voranox Accord serves arbitration and dispute resolution — case, evidence, and settlement intelligence for arbitral institutions, international tribunals, and the counsel who appear before them, engineered to the confidentiality and neutrality the forum demands.",
+      "“Law is not a subcategory of knowledge work — it is its own physics,” the firm said. “Privilege, disclosure, neutrality, and the supervisory relationship are constraints no general-purpose system carries natively. The Legal domain gives the profession what our doctrine promises every industry: intelligence engineered to its own language, its own physics, and its own ethics.”",
+      "Consistent with the Voranox doctrine, all three platforms are engineered sovereign-grade by default, with auditability and provenance as first-class properties and human authority preserved: the lawyer's judgment, the compliance officer's attestation, and the tribunal's decision remain human acts.",
+      "The full directory is available at voranox.com/platforms. The Legal domain platforms are published at voranox.com/platforms/legal, voranox.com/platforms/regulatory-compliance, and voranox.com/platforms/disputes.",
+    ],
+    about:
+      "Voranox Inc. is the parent company architecting intelligent platforms across every industry, sector, and institution worldwide. The firm operates as an intelligence consultancy serving sovereigns, institutions, and global industries with intelligence engineered to their reality. Voranox is reserved for organizations operating at the scale of nations, markets, and global industries, and engineers its platforms to that standard.",
+    contact:
+      "Press desks may direct inquiries to press@voranox.com. The firm responds to bona fide press inquiries within one business day.",
+  },
+  {
     slug: "voranox-introduces-the-firm",
     date: "Inaugural Release",
     dateline: "NEW YORK · LONDON · HONG KONG",

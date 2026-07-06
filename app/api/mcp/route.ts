@@ -79,7 +79,7 @@ const TOOL_DEFS = [
   {
     name: "list_platforms",
     description:
-      "List all 46 Voranox industry-native platforms. Optionally filter by category.",
+      "List all 48 Voranox industry-native platforms. Optionally filter by category.",
     inputSchema: {
       type: "object",
       properties: {
@@ -93,6 +93,7 @@ const TOOL_DEFS = [
             "Society",
             "Infrastructure",
             "Knowledge",
+            "Legal",
             "Commerce",
           ],
         },

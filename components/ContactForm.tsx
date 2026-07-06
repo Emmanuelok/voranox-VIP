@@ -54,6 +54,7 @@ export function ContactForm() {
           <option>Society</option>
           <option>Infrastructure</option>
           <option>Knowledge</option>
+          <option>Legal</option>
           <option>Commerce</option>
         </select>
       </div>

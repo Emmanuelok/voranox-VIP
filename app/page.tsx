@@ -75,7 +75,7 @@ export default function HomePage() {
           <div className="flex items-end justify-between flex-wrap gap-6 mb-14">
             <div>
               <p className="text-xs tracking-[0.4em] uppercase text-gold/80 mb-4">
-                Eight Domains. One Standard.
+                Nine Domains. One Standard.
               </p>
               <h2 className="font-serif text-4xl md:text-5xl text-ivory max-w-2xl">
                 Architected across the breadth of global enterprise.
@@ -88,7 +88,7 @@ export default function HomePage() {
               All platforms →
             </Link>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-gold/10 border border-gold/15">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-px bg-gold/10 border border-gold/15">
             {sectorCategories.map((cat) => {
               const count = sectors.filter((s) => s.category === cat).length;
               return (

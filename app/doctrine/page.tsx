@@ -11,7 +11,7 @@ const planks = [
   {
     n: "01",
     title: "One platform per industry.",
-    body: "Each industry has its own physics, its own language, and its own ethics. Voranox builds one purpose-engineered platform for each — Sterling for banking, Vitae for medicine, Sentinel for allied defense, Civitas for the state, and forty-two more. We do not collapse them into a single system. The seams between industries are precisely where the bad assumptions live.",
+    body: "Each industry has its own physics, its own language, and its own ethics. Voranox builds one purpose-engineered platform for each — Sterling for banking, Vitae for medicine, Sentinel for allied defense, Civitas for the state, Counsel for the law, and forty-three more. We do not collapse them into a single system. The seams between industries are precisely where the bad assumptions live.",
   },
   {
     n: "02",

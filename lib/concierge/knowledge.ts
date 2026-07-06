@@ -100,7 +100,7 @@ function build(): KnowledgeDoc[] {
 
   // A few navigational pages the concierge should be able to point to.
   const pages: Array<[string, string, string]> = [
-    ["Platforms directory", "/platforms", "The full directory of 46 Voranox platforms across eight domains."],
+    ["Platforms directory", "/platforms", `The full directory of ${sectors.length} Voranox platforms across nine domains, including the Legal domain (Voranox Counsel, Voranox Statute, Voranox Accord).`],
     ["Trust & Standards", "/trust", "Security, governance, and compliance posture: sovereign deployment, auditability, ISO 27001/42001, SOC 2, NIST AI RMF, EU AI Act, GDPR, HIPAA."],
     ["Architecture", "/architecture", "Engineering posture: substrate, data sovereignty, model lifecycle, deployment topology, integration standards, observability, resilience."],
     ["Engagement", "/engagement", "How a Voranox engagement proceeds across six stages."],

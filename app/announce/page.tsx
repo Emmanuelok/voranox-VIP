@@ -130,8 +130,8 @@ export default function AnnouncePage() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-gold/10 border border-gold/15">
             <Card
               eyebrow="Directory"
-              title="The 46 platforms"
-              body="The full catalog, organized across eight domains and forty-six industries."
+              title={`The ${sectors.length} platforms`}
+              body="The full catalog, organized across nine domains and forty-eight industries."
               href="/platforms"
             />
             <Card

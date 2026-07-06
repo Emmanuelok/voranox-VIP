@@ -15,9 +15,16 @@ describe("concierge · knowledge corpus", () => {
     }
   });
 
-  it("includes all 46 platforms", () => {
+  it("includes all 48 platforms", () => {
     const platforms = knowledge.filter((d) => d.kind === "platform");
-    assert.equal(platforms.length, 46);
+    assert.equal(platforms.length, 48);
+  });
+
+  it("includes the Legal domain platforms", () => {
+    const ids = knowledge.map((d) => d.id);
+    assert.ok(ids.includes("platform-legal"), "Counsel present");
+    assert.ok(ids.includes("platform-regulatory-compliance"), "Statute present");
+    assert.ok(ids.includes("platform-disputes"), "Accord present");
   });
 });
 
@@ -38,6 +45,12 @@ describe("concierge · retrieval", () => {
     const results = retrieve("what is the firm's doctrine on restraint", 6);
     const joined = results.map((r) => r.id).join(" ");
     assert.match(joined, /restraint|doctrine|firm/);
+  });
+
+  it("finds the regulatory platform for a compliance query", () => {
+    const results = retrieve("regulatory compliance obligations mapping", 5);
+    const top = results.slice(0, 3).map((r) => r.url).join(" ");
+    assert.match(top, /regulatory-compliance/);
   });
 
   it("returns a sane floor when the query has no usable terms", () => {
