@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { sectors, sectorCategories } from "@/lib/sectors";
 import { SectorCard } from "@/components/SectorCard";
+import { HeroCanvas } from "@/components/HeroCanvas";
+import { Counter } from "@/components/Counter";
 
 export default function HomePage() {
   const featured = sectors.slice(0, 9);
@@ -9,6 +11,7 @@ export default function HomePage() {
     <>
       {/* HERO */}
       <section className="relative overflow-hidden noise">
+        <HeroCanvas />
         <div className="absolute inset-0 bg-midnight-glow pointer-events-none" />
         <div className="absolute inset-x-0 top-0 h-px hairline border-t" />
         <div className="relative max-w-7xl mx-auto px-6 lg:px-10 py-32 lg:py-44">
@@ -18,7 +21,7 @@ export default function HomePage() {
           <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl leading-[1.05] max-w-5xl fade-up">
             Intelligence,{" "}
             <span className="gold-text shimmer bg-gold-shine">refined</span>{" "}
-            for every industry on earth.
+            for every industry.
           </h1>
           <p className="mt-10 max-w-2xl text-lg md:text-xl text-ivory/70 leading-relaxed fade-up">
             Voranox Inc. is the parent company architecting Voranox intelligent
@@ -43,9 +46,9 @@ export default function HomePage() {
           </div>
 
           <div className="mt-24 grid grid-cols-2 md:grid-cols-4 gap-y-10 gap-x-8 max-w-4xl border-t border-gold/15 pt-12">
-            <Stat label="Industries served" value={`${sectors.length}+`} />
-            <Stat label="Continents" value="6" />
-            <Stat label="Languages" value="40+" />
+            <StatNum value={sectors.length} suffix="+" label="Industries served" />
+            <StatNum value={6} label="Continents" />
+            <StatNum value={40} suffix="+" label="Languages" />
             <Stat label="Sovereign-grade" value="Yes" />
           </div>
         </div>
@@ -168,6 +171,29 @@ function Stat({ label, value }: { label: string; value: string }) {
   return (
     <div>
       <p className="font-serif text-3xl md:text-4xl gold-text">{value}</p>
+      <p className="mt-2 text-[10px] tracking-[0.3em] uppercase text-ivory/50">
+        {label}
+      </p>
+    </div>
+  );
+}
+
+function StatNum({
+  value,
+  suffix,
+  label,
+}: {
+  value: number;
+  suffix?: string;
+  label: string;
+}) {
+  return (
+    <div>
+      <Counter
+        value={value}
+        suffix={suffix}
+        className="font-serif text-3xl md:text-4xl gold-text"
+      />
       <p className="mt-2 text-[10px] tracking-[0.3em] uppercase text-ivory/50">
         {label}
       </p>

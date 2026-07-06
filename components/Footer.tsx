@@ -72,9 +72,9 @@ export function Footer() {
             <ul className="space-y-1 text-sm text-ivory/60">
               <li>New York</li>
               <li>London</li>
-              <li>Singapore</li>
+              <li>Hong Kong</li>
               <li>Dubai</li>
-              <li>Lagos</li>
+              <li>Accra</li>
             </ul>
           </div>
         </div>

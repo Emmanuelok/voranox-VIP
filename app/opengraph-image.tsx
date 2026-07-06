@@ -82,7 +82,7 @@ export default async function OpengraphImage() {
             >
               refined
             </span>{" "}
-            for every industry on earth.
+            for every industry.
           </div>
           <div
             style={{

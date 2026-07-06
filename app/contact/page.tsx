@@ -38,9 +38,9 @@ export default function ContactPage() {
             <ul className="grid grid-cols-2 gap-y-2 text-sm text-ivory/60">
               <li>New York</li>
               <li>London</li>
-              <li>Singapore</li>
+              <li>Hong Kong</li>
               <li>Dubai</li>
-              <li>Lagos</li>
+              <li>Accra</li>
               <li>Geneva</li>
             </ul>
           </div>

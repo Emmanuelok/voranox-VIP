@@ -28,7 +28,9 @@ export type EventName =
   | "login.signed_out"
   | "mcp.call"
   | "mcp.rate_limited"
-  | "portal.access";
+  | "portal.access"
+  | "concierge.message"
+  | "concierge.error";
 
 type Payload = Record<string, unknown>;
 

@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 const factSheet = [
   { label: "Legal name", value: "Voranox Incorporated" },
   { label: "Founded", value: "2025" },
-  { label: "Headquarters", value: "New York · London · Singapore" },
+  { label: "Headquarters", value: "New York · London · Hong Kong" },
   { label: "Sectors served", value: "46 industry platforms" },
   { label: "Domains", value: "Public Sector · Financial · Industry · Life Sciences · Society · Infrastructure · Knowledge · Commerce" },
   { label: "Tagline", value: "Intelligence, refined." },

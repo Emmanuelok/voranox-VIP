@@ -5,6 +5,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { Concierge } from "@/components/Concierge";
 import { SITE_URL } from "@/lib/site";
 
 const inter = Inter({
@@ -119,6 +120,7 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
+        <Concierge />
         <Analytics />
         <SpeedInsights />
       </body>
