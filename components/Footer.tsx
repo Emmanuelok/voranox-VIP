@@ -2,29 +2,48 @@ import Link from "next/link";
 import { Logo } from "./Logo";
 import { sectors } from "@/lib/sectors";
 
+const firmLinks: Array<[string, string]> = [
+  ["About", "/about"],
+  ["Doctrine", "/doctrine"],
+  ["Practices", "/practices"],
+  ["Architecture", "/architecture"],
+  ["Engagements", "/case-studies"],
+  ["Trust", "/trust"],
+  ["Insights", "/insights"],
+  ["Press", "/press"],
+  ["Engagement", "/engagement"],
+  ["Careers", "/careers"],
+  ["Legal", "/legal"],
+  ["Status", "/status"],
+  ["Contact", "/contact"],
+];
+
+const offices = ["New York", "London", "Hong Kong", "Dubai", "Accra", "Geneva"];
+
 export function Footer() {
-  const featured = sectors.slice(0, 12);
+  const featured = sectors.slice(0, 6);
 
   return (
     <footer className="mt-32 border-t border-gold/15 bg-midnight-50">
-      <div className="max-w-7xl mx-auto px-6 lg:px-10 py-20 grid gap-16 lg:grid-cols-12">
-        <div className="lg:col-span-4 space-y-6">
+      <div className="max-w-7xl mx-auto px-6 lg:px-10 py-16 grid gap-x-10 gap-y-12 lg:grid-cols-12">
+        {/* Brand */}
+        <div className="lg:col-span-4 space-y-5">
           <Logo size="lg" />
-          <p className="text-ivory/60 text-sm leading-relaxed max-w-sm">
-            Voranox Inc. is the parent company architecting intelligent
-            platforms for every industry, sector, and institution across the
-            world.
+          <p className="text-ivory/60 text-sm leading-relaxed max-w-xs">
+            The parent company architecting intelligent platforms for every
+            industry, sector, and institution across the world.
           </p>
           <p className="text-xs tracking-[0.3em] uppercase text-gold/80">
             Intelligence, refined.
           </p>
         </div>
 
-        <div className="lg:col-span-5">
-          <h4 className="text-xs tracking-[0.3em] uppercase text-gold mb-6">
-            Featured Platforms
+        {/* Platforms */}
+        <div className="lg:col-span-3">
+          <h4 className="text-xs tracking-[0.3em] uppercase text-gold mb-5">
+            Platforms
           </h4>
-          <ul className="grid grid-cols-2 gap-x-8 gap-y-3 text-sm text-ivory/70">
+          <ul className="space-y-2.5 text-sm text-ivory/70">
             {featured.map((s) => (
               <li key={s.slug}>
                 <Link
@@ -35,48 +54,43 @@ export function Footer() {
                 </Link>
               </li>
             ))}
+            <li>
+              <Link
+                href="/platforms"
+                className="text-xs tracking-[0.25em] uppercase text-gold/80 hover:text-gold"
+              >
+                View all →
+              </Link>
+            </li>
           </ul>
-          <Link
-            href="/platforms"
-            className="inline-block mt-6 text-xs tracking-[0.3em] uppercase text-gold hover:text-gold-light"
-          >
-            View all platforms →
-          </Link>
         </div>
 
-        <div className="lg:col-span-3 space-y-8">
-          <div>
-            <h4 className="text-xs tracking-[0.3em] uppercase text-gold mb-4">
-              Firm
-            </h4>
-            <ul className="space-y-2 text-sm text-ivory/70">
-              <li><Link href="/about" className="hover:text-gold">About</Link></li>
-              <li><Link href="/doctrine" className="hover:text-gold">Doctrine</Link></li>
-              <li><Link href="/practices" className="hover:text-gold">Practices</Link></li>
-              <li><Link href="/architecture" className="hover:text-gold">Architecture</Link></li>
-              <li><Link href="/case-studies" className="hover:text-gold">Engagements</Link></li>
-              <li><Link href="/trust" className="hover:text-gold">Trust</Link></li>
-              <li><Link href="/insights" className="hover:text-gold">Insights</Link></li>
-              <li><Link href="/press" className="hover:text-gold">Press</Link></li>
-              <li><Link href="/engagement" className="hover:text-gold">Engagement</Link></li>
-              <li><Link href="/careers" className="hover:text-gold">Careers</Link></li>
-              <li><Link href="/legal" className="hover:text-gold">Legal</Link></li>
-              <li><Link href="/status" className="hover:text-gold">Status</Link></li>
-              <li><Link href="/contact" className="hover:text-gold">Contact</Link></li>
-            </ul>
-          </div>
-          <div>
-            <h4 className="text-xs tracking-[0.3em] uppercase text-gold mb-4">
-              Offices
-            </h4>
-            <ul className="space-y-1 text-sm text-ivory/60">
-              <li>New York</li>
-              <li>London</li>
-              <li>Hong Kong</li>
-              <li>Dubai</li>
-              <li>Accra</li>
-            </ul>
-          </div>
+        {/* Firm — two columns to keep it short */}
+        <div className="lg:col-span-3">
+          <h4 className="text-xs tracking-[0.3em] uppercase text-gold mb-5">
+            Firm
+          </h4>
+          <ul className="grid grid-cols-2 gap-x-6 gap-y-2.5 text-sm text-ivory/70">
+            {firmLinks.map(([label, href]) => (
+              <li key={href}>
+                <Link href={href} className="hover:text-gold transition-colors">
+                  {label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* Offices */}
+        <div className="lg:col-span-2">
+          <h4 className="text-xs tracking-[0.3em] uppercase text-gold mb-5">
+            Offices
+          </h4>
+          <ul className="space-y-2.5 text-sm text-ivory/60">
+            {offices.map((o) => (
+              <li key={o}>{o}</li>
+            ))}
+          </ul>
         </div>
       </div>
 
@@ -90,9 +104,7 @@ export function Footer() {
             <Link href="/ar" className="hover:text-gold">العربية</Link>
             <Link href="/zh" className="hover:text-gold">中文</Link>
           </div>
-          <p className="tracking-[0.3em] uppercase">
-            The Intelligence Standard
-          </p>
+          <p className="tracking-[0.3em] uppercase">The Intelligence Standard</p>
         </div>
       </div>
     </footer>
